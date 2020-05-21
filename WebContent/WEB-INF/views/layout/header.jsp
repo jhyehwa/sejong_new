@@ -25,7 +25,7 @@
             </c:if> 
          </div>   
 	   <div class="logo-main">
-         <a href="#"><img class="logo" src="/sejong_/resource/image/logo.png"></a>
+         <a href="#"><img class="logo" src="/sejong_new/resource/image/logo.png"></a>
       </div>            
     </div>
  </div>
