@@ -37,9 +37,9 @@
             <a href="#">Menu</a>
             <ul class="menu_sub">
                 <li value="main"><a href="<%=cp%>/foodmenu/list.do?type=main">Main</a></li>
-                <li value="side"><a href="<%=cp%>/foodmenu/list.do?">Side</a></li>
+                <li value="side"><a href="<%=cp%>/foodmenu/list.do?type=side">Side</a></li>
                 <li value="desserts"><a href="<%=cp%>/foodmenu/list.do?type=desserts">Desserts</a></li>
-                <li value="others"><a href="<%=cp%>/foodmenu/list.do">Others</a></li>
+                <li value="others"><a href="<%=cp%>/foodmenu/list.do?type=others">Others</a></li>
             </ul>
         </li>
 
