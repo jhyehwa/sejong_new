@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+.body_title {
+	background: yellow;
+	float: left;
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+
+.container .body-container .body_title h2 {
+	color: white;
+	font-size: 22px;
+}
+
+.menu {
+	width: 960px;
+	background: fuchsia;
+}
+
+.image_list {
+	margin: 0 auto;
+	width: 400px;
+	height: 200px;
+	background: yellow;
+	margin-top: 20px;
+}
+
+.image {
+	width: 400px;
+	height: 200px;
+}
+
+.name {
+	background: lime;
+	width: 400px;
+	margin: 0 auto;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+}
+
+.name:hover {
+	cursor: pointer;
+}
+
+.intro {
+	background: red;
+	color: white;
+	width: 400px;
+	margin: 0 auto;
+	font-size: 17px;
+}
+
+.num_page {
+	background: aqua;
+	margin: 0 auto;
+}
+
+.num {
+	background: green;
+}
+
+.photo {
+	margin-left: auto;
+	margin-bottom: 10px;
+}
+
+.photo_btn {
+	width: 100px;
+	height: 25px;
+	font-size: 15px;
+}

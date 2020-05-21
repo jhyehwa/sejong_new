@@ -1,0 +1,237 @@
+@charset "UTF-8";
+
+.text-sub1 {
+	position: fixed;
+	left: 220px;
+	top: 170px;
+	width: 180px;
+	height: 250px;
+	clear: both;
+}
+
+
+.hold-menu {
+	width: 180px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 15px 3px 15px 3px;
+	background: #4B4B4B;
+}
+
+.sub-menu li {
+	width: 180px;
+	height: 50px;
+	line-height: 50px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.sub-menu li a {
+	color: white;
+	padding: 6px 40px;
+}
+
+.sub-menu li:hover {
+	background: #575757;
+	border-radius: 15px 3px 15px 3px;
+}
+
+.sub-menu li a:hover {
+	background: #575757;
+	opacity: 0.8;
+}
+
+.reserve {
+	margin-top: 30px;
+	width: 960px;
+	height: 600px;
+}
+
+h3 {
+	width: 193px; 
+	color: white;
+	text-align: center;	
+	margin: 0px auto;
+	font-size: 20px;	
+	padding: 5px;	
+	padding-top: 20px;
+}
+
+.title {
+	margin-top: 30px;
+}
+
+.title p {
+	width:700px; 
+	padding: 5px 5px; 
+	font-size: 17px; 
+	font-weight: bold; 
+	text-align: left;
+	margin-left: 10px;
+	margin: 0px auto;
+	color: white;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.notice p {
+	text-align: left;
+	width: 700px;
+	padding: 10px 5px;
+	margin-left: 10px;
+	margin: 0px auto;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 22px;
+	color: white;
+}
+
+.blank {
+	float: left;
+	width: 337px;
+	height: 250px;
+	margin-left: 125px;
+	margin-top: 40px;	
+}
+
+.blank2 {
+	float: left;
+	width: 337px;
+	height: 190px;
+	margin-left: 125px;
+	margin-top: 40px;	
+}
+
+.title1 p {
+	width:332px; 
+	padding: 5px 0px 5px 5px;
+	font-size: 17px; 
+	font-weight: bold; 
+	text-align: left;	
+	color: white;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.reserve-info1 p {	
+	text-align: left;
+	width: 337px;
+	padding: 5px 0px;
+	margin-left: 5px;
+	font-size: 16px;
+	margin-top: 5px;	
+	color: white;
+}
+
+.title2 p {
+	width:332px; 
+	padding: 5px 0px 5px 5px;
+	font-size: 17px; 
+	font-weight: bold; 
+	text-align: left;
+	color: white;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.reserve-info2 p {	
+	text-align: left;
+	width: 337px;
+	padding: 5px 0px;
+	margin-left: 5px;
+	font-size: 16px;
+	margin-top: 5px;	
+	color: white;
+}
+
+.selectField {
+	width: 80px;
+	height: 27px;
+	border-radius: 4px;
+	border: 1px solid #EAEAEA;
+}
+
+.selectField2 {
+	width: 130px;
+	height: 27px;
+	border-radius: 4px;
+	border: 1px solid #EAEAEA;
+}
+
+.button {
+	clear: both;
+	margin: 0px auto;
+}
+
+.btn {
+	margin-top: 30px;
+	clear: both;
+	width: 95px;
+	height: 30px;
+	border-radius: 4px;
+	border: 1px solid #EAEAEA;
+	cursor: pointer;
+	padding: 3px auto;
+	font-size: 14px;	
+	color: red;
+}  
+
+.msg {
+	font-size: 20px;
+	font-weight: bold;
+    color:white;   
+	width: 400px;
+	margin: 0px auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.yb{
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+    margin-top: 30px;
+}
+
+.search {
+	margin-top: 60px;
+}
+
+.search p {
+	width: 400px; 
+	padding: 5px 5px; 
+	font-size: 17px; 
+	font-weight: bold; 
+	text-align: center;
+	margin-left: 10px;
+	margin: 0px auto;
+	color: white;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.searchinput {
+	margin: 0px auto;
+}
+
+.searchinput p {
+	text-align: center;
+	width: 400px;	
+	padding: 10px 5px;
+	margin-left: 10px;
+	margin: 0px auto;
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 22px;	
+	color: white;
+	padding-top: 30px;
+	padding-bottom: 12px;
+}
+
+.rlist-title {
+	color: #4C4C4C; 
+	font-size: 13.5px;	
+}

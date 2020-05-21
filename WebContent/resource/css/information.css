@@ -1,0 +1,514 @@
+@charset "UTF-8";
+
+.main-left {
+	height: 100px;
+}
+
+header {
+	width: 960px;
+	height: 100px;
+	margin: 0 auto;
+}
+
+.logo-main {
+	margin: 0 auto;
+}
+
+.logo {
+	width: 80px;
+	height: 80px;
+	margin: 0px auto;
+}
+
+.top {
+	width: 100%;
+	text-align: center;
+}
+
+nav {
+	width: 960px;
+	height: 40px;
+	margin: 0 auto;
+}
+
+.main {
+	clear: both;
+	margin: 0px auto;
+	width: 960px;
+}
+
+.noticebutton{
+	clear: both;
+	margin: 0 auto;
+}
+
+.noticebutton a{
+	float: left;
+	color: white;
+	
+}
+
+.main-left {
+	height: 100px;
+}
+
+.left {
+	display: block;
+	width: 130px;
+	height: 20px;
+	margin-left: 800px;
+	margin-top: 10px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.left a {
+	color: white;
+}
+
+.info {
+	margin: 0 auto;
+	width: 960px;
+	height: 550px;
+}
+
+.info-title {
+	padding-top: 20px;
+	color: white;
+	margin: 0 auto;
+	text-align: left;
+	font-size: 30px;
+	font-weight: bold;
+	width: 960px;
+	padding-bottom: 20px;
+}
+
+.info-main {
+	margin-top: 10px;
+	font-size: 25px;
+	font-weight: bold;
+	color: white;
+	line-height: 120px;
+}
+
+.info-main li {
+	text-align: center;
+}
+
+.info-sub {
+	margin-top: 10px;
+	color: white;
+	width: 100%;
+	height: 40px;
+}
+
+.info-sub li {
+	float: left;
+	text-align: center;
+	line-height: 40px;
+	height: 40px;
+	font-size: 15px;
+	font-weight: bold;
+	border-bottom: 3px solid white;
+}
+
+.info-content-title {
+	width: 900px;
+	margin: 30px;
+	border-top: 3px solid white;
+}
+
+.info-content-title li {
+	float: left;
+	color: white;
+	border-bottom: 1px solid white;
+}
+
+.input-question {
+	width: 200px;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	clear: both;
+}
+
+.input-answer {
+	width: 683px;
+	height: 50px;
+	padding-left: 17px;
+	line-height: 50px;
+}
+
+.input-answer input {
+	height: 30px;
+	width: 580px;
+	margin: 2px;
+	border-radius: 10px;
+}
+
+.input-answer-little {
+	width: 683px;
+	height: 50px;
+	text-align: left;
+	line-height: 50px;
+	padding-left: 17px;
+}
+
+.input-answer-little input {
+	height: 30px;
+	width: 380px;
+	margin: 2px;
+	border-radius: 10px;
+}
+.input-question-middle{
+	width: 200px;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	clear: both;
+}
+.input-answer-middle{
+	width: 683px;
+	height: 50px;
+	text-align: left;
+	padding-left: 17px;
+	line-height: 50px;
+}
+
+.input-answer-middle .inputDate{
+	margin-left: 10px;
+	height: 30px;
+	border-radius: 10px
+}
+
+.input-question-large {
+	width: 200px;
+	text-align: center;
+	height: 400px;
+	line-height: 400px;
+	clear: both;
+}
+
+.input-answer-content {
+	width: 683px;
+	height: 400px;
+	padding-left: 17px;
+}
+
+.input-answer-content textarea{
+	margin-top: 12px;
+}
+
+.input-answer-content input {
+	height: 380px;
+	width: 580px;
+	margin: 2px;
+	border-radius: 10px;
+}
+
+.info-content li {
+	padding: 15px;
+	color: white;
+}
+
+.info-input {
+	margin-top: 10px;
+	color: white;
+	width: 100%;
+	height: 30px;
+}
+
+.info-input li {
+	float: left;
+	text-align: center;
+	line-height: 40px;
+	height: 40px;
+	font-size: 15px;
+	font-weight: bold;
+	border-bottom: 0.5px solid white;
+	line-height: 40px;
+}
+
+.num {
+	width: 8%;
+}
+
+.title {
+	width: 50%;
+}
+
+.title a {
+	color: white;
+}
+
+.name {
+	width: 14%;
+}
+
+.date {
+	width: 20%;
+}
+
+.hit {
+	width: 8%;
+}
+
+.info-middle {
+	
+}
+
+.nextpage {
+	padding-top: 10px;
+	height: 40px;
+	line-height: 40px;
+}
+
+.nextpage li {
+	text-align: center;
+}
+
+.nextpage li a {
+	color: white;
+}
+
+.info-bottom {
+	margin-top: 10px;
+	color: white;
+	width: 50%;
+	height: 40px;
+	margin-left: 200px;
+}
+
+.info-bottom li {
+	float: left;
+}
+
+.info-bottom form{
+	margin-left: 220px;
+}
+
+.write-board1 {
+	margin-left: 60px;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.info-content-last {
+	margin-top: 20px;
+	color: white;
+	width: 300px;
+	height: 40px;
+	clear: both;
+	padding-left: 350px;
+}
+
+.info-content-button {
+	
+}
+
+.info-content-button li {
+	text-align: center;
+	float: left;
+}
+
+.info-content-button li button {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-right: 20px;
+	height: 25px;
+	width: 60px;
+}
+
+.serch-option {
+	height: 30px;
+	margin-right: 10px
+}
+
+.serch-text {
+	height: 26px;
+	width: 300px;
+	margin-right: 10px
+}
+
+.serch-button {
+	height: 30px;
+	width: 40px;
+	margin-right: 10px
+}
+
+.write-board {
+	margin-left: 160px;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+
+.address {
+	/* padding-top: 20px; */
+	width: 800px;
+	height: 650px;
+}
+
+.address-info {
+	margin: 0 auto;
+	width: 960px;
+}
+
+.address-info li {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	margin-top: 20px;
+}
+
+.text-sub1 {
+	position: fixed;
+	left: 220px;
+	top: 170px;
+	width: 180px;
+	height: 250px;
+	clear: both;
+}
+
+.hold-menu {
+	width: 180px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 15px 3px 15px 3px;
+	background: #4B4B4B;
+}
+
+.sub-menu li {
+	width: 180px;
+	height: 50px;
+	line-height: 50px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.sub-menu li a {
+	color: white;
+	padding: 5px 50px;
+}
+
+.sub-menu li:hover {
+	background: #575757;
+	border-radius: 15px 3px 15px 3px;
+}
+
+.sub-menu li a:hover {
+	opacity: 0.8;
+}
+
+.board {
+	width: 900px;
+	margin: 30px;
+	border-top: 3px solid white;
+}
+
+.board-qeustion {
+	clear: both;
+	float: left;
+	text-align: center;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	color: white;
+	border-right: 1px solid white;
+}
+
+.board-qeustion-left {
+	float: left;
+	text-align: center;
+	width: 98px;
+	height: 40px;
+	line-height: 40px;
+	color: white;
+	border-right: 1px solid white;
+}
+
+.board-answer-long {
+	padding-left:10px;
+	float: left;
+	width: 430px;
+	height: 40px;
+	line-height: 40px;
+	color: white;
+}
+
+.board-answer-short {
+	padding-left:10px;
+	float: left;
+	width: 250px;
+	height: 40px;
+	line-height: 40px;
+	color: white;
+}
+
+.board-content {
+	padding: 15px;
+	clear: both;
+	width: 870px;
+	min-height: 350px;
+	color: white;
+	border-top: 3px solid white;
+	border-bottom: 3px solid white;
+}
+
+.border-bottom {
+	clear: both;
+}
+
+.board-content-last {
+	margin-top: 10px;
+	color: white;
+	width: 650px;
+	height: 40px;
+	clear: both;
+	padding-left: 370px;
+	text-align: center;
+}
+
+.board-content-button {
+	clear: both;
+}
+
+.board-content-button1 li{
+	text-align: center;
+	float: left;
+}
+
+.board-content-button1 li button {
+	margin-bottom: 5px;
+	margin-left: 30px;
+	height: 30px;
+	width: 60px;
+}
+
+.board-content-button li {
+	text-align: center;
+	float: left;
+}
+
+.board-content-button li button {
+	margin-bottom: 5px;
+	margin-right: 15px;
+	height: 30px;
+	width: 60px;
+}
+
+.board-content-button li a {
+	color: white;
+	margin-left: 280px;
+	height: 40px;
+	line-height: 35px;
+	font-size: 20px;
+	font-weight: bold;
+}
