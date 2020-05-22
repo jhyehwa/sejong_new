@@ -237,8 +237,8 @@ public class QnADAO {
 		String sql;
 		
 		try {
-			sql="SELECT q_num, q_id, q_name, q_title, q_groupNum, q_orderNo, q_depth, q_hitCount ";
-			sql+=" TO_CHAR(q_created, 'YYYY-MM-DD') q_created FROM qna q JOIN member1 m ON q.id = m.id";
+			sql="SELECT q_num, q_id, q_writer, q_title, q_groupNum, q_orderNo, q_depth, q_hitCount,";
+			sql+=" TO_CHAR(q_created, 'YYYY-MM-DD') q_created FROM qna q JOIN member1 m ON q.q_id = m.m_id";
 			if(condition.equals("writer")) {
 				sql+=" WHERE INSTR(q_writer, ?) = 1";
 			} else {
@@ -296,7 +296,7 @@ public class QnADAO {
 		String sql;
 		
 		try {
-			sql="SELECT q_num, q_id, q_name, q_title, q_groupNum, q_orderNo, q_depth, q_hitCount ";
+			sql="SELECT q_num, q_id, q_writer, q_title, q_groupNum, q_orderNo, q_depth, q_hitCount ";
 			sql+=" q_content, TO_CHAR(q_created, 'YYYY-MM-DD') q_created FROM qna q JOIN member1 m ON q.id = m.id";
 			sql+=" WHERE q_num = ?";
 			

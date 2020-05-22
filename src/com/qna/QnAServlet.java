@@ -62,18 +62,13 @@ public class QnAServlet extends MyServlet{
 		String condition = req.getParameter("condition");
 		String keyword = req.getParameter("keyword");
 		if(condition == null) {
-			condition = "";
+			condition = "";			
 		}
-		
-		if(req.getMethod().equalsIgnoreCase("GET")) {
-			keyword = URLDecoder.decode(keyword, "UTF-8");
-		}
-		
 		int dataCount;
-		if(keyword.length()==0) {
-			dataCount = dao.dataCount();
-		} else {
+		if(keyword!=null && keyword.length()!=0) {
 			dataCount = dao.dataCount(condition, keyword);
+		} else {
+			dataCount = dao.dataCount();
 		}
 		
 		int rows = 10;
@@ -85,7 +80,7 @@ public class QnAServlet extends MyServlet{
 		int offset = (now_page -1) * rows;
 		
 		List<QnADTO> list;
-		if(keyword.length()==0) {
+		if(keyword!=null && keyword.length()==0) {
 			list = dao.listQnA(offset, rows);
 		} else {
 			list = dao.listQnA(offset, rows, condition, keyword);
@@ -99,7 +94,7 @@ public class QnAServlet extends MyServlet{
 		}
 		
 		String query = "";
-		if(keyword.length() != 0) {
+		if(keyword!=null && keyword.length() != 0) {
 			query = "condition = " + condition + "&keyword=" + URLEncoder.encode(keyword, "UTF-8");
 		}
 		

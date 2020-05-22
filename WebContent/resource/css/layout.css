@@ -90,6 +90,12 @@
 	width: 960px;	
 }
 
+.menu:after{
+	content:"";
+	clear:both;
+	display:block;
+}
+
 .menu_li {
 	margin-top: 10px;
 	border-top: 2px solid white;
