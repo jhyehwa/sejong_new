@@ -32,13 +32,11 @@
 
 	<div class="container">
 		<div class="body-container">
-			<div class="body_title">
-		
+			<div>
 				<h2>| Main </h2>
-			
 			</div>
 			
-			<table class="menu">
+			<table class="menu_">
 				<c:forEach var="dto" items="${list}" varStatus="status">
 					<c:if test="${status.index == 0}">
 						<tr>
@@ -46,7 +44,7 @@
 					<c:if test="${status.index != 0 && status.index % 2 == 0}">
 						<c:out value="</tr><tr>" escapeXml="false"/>
 					</c:if>
-					<td class="image_box">
+					<td class="image_box" style="width: 300px;">
 						<div class="image_list">
 							<img class="image" src="<%=cp%>/uploads/f_food/${dto.f_image}">
 						</div>
@@ -54,9 +52,6 @@
 							<span onclick="javascript:article('${dto.f_num}');">
 								${dto.f_name}
 							</span>
-						</div>
-						<div class="intro" style="margin-bottom: 20px;">
-							${dto.f_intro}
 						</div>
 					</td>
 				</c:forEach>

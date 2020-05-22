@@ -1,60 +1,48 @@
 @charset "UTF-8";
 
-.body_title {
-	background: yellow;
-	float: left;
-	margin-top: 10px;
-	padding-bottom: 10px;
-}
-
-.container .body-container .body_title h2 {
-	color: white;
-	font-size: 22px;
-}
-
-.menu {
+h2 {
+	padding-top: 20px;
 	width: 960px;
+	text-align: left;
+	font-size: 22px;
+	color: white;
 	background: fuchsia;
 }
 
+.menu_ {
+	/* width: 960px; */
+}
+
 .image_box {
-	width: 400px;
-	height: 200px;
 	background: aqua;
 }
 
 .image_list {
 	margin: 0 auto;
 	width: 400px;
-	height: 200px;
+	height: 250px;
+	margin-top: 10px;
 	background: yellow;
-	margin-top: 20px;
 }
-
+/* 
 .image {
 	width: 400px;
-	height: 200px;
+	height: 250px;
 }
 
 .name {
-	background: lime;
 	margin: 0 auto;
 	width: 400px;
+	height: 30px;
 	font-size: 20px;
 	font-weight: bold;
 	color: white;
-}
+	margin-bottom: 10px;
+	background: lime;
+} */
 
 .name:hover {
 	cursor: pointer;
-}
-
-.intro {
-	background: red;
-	margin: 0 auto;
-	color: white;
-	width: 400px;
-	font-size: 17px;
 }
 
 .num_page {

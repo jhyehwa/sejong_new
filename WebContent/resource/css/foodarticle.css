@@ -3,7 +3,6 @@
 .body_title {
 	float: left;
 	margin-top: 20px;
-	padding-bottom: 30px;
 }
 
 .container .body-container .body_title h2 {
@@ -11,18 +10,19 @@
 	font-size: 22px;
 }
 
-.menu {
+.menu_ {
 	font-size: 18px;
 	font-family:"Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
+	background: red;
+	height: 500px;
 }
 
 .menu_list {
-	width: 800px;
+	width: 420px;
 	border-spacing: 0;
 	border-collapse: collapse;
-	margin: 0 auto;
-	color: white;
-	background: lime;
+	margin-left: 50px;
+	background: aqua;
 }
 
 .title {
@@ -38,8 +38,12 @@
 } */
 
 .write {
-	width: 550px;
 	text-align: left;
+	background: yellow;
+}
+
+.write img {
+	margin-left: 10px;
 }
 
 .write input {

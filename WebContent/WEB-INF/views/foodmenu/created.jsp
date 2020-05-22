@@ -78,7 +78,7 @@
 				<h3>| Registration</h3>
 			</div>
 			
-			<div class="menu">
+			<div class="menu_">
 				<form name="FoodMenuForm" method="post" enctype="multipart/form-data">
 					<table class="menu_list">
 						<tr class="title">

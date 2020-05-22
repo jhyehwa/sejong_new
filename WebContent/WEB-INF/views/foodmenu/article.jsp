@@ -39,27 +39,34 @@
 	<div class="header">
 	    <jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 	</div>
+	
 	<div class="container">
 		<div class="body-container">
 			<div class="body_title">
 				<h2>| Main</h2>
 			</div>
 			
-			<div class="menu">
+			<div class="menu_">
 				<table class="menu_list">
-					<%-- <tr class="title">
+					<tr class="title">
+						<td class="write">
+							<img src="<%=cp%>/uploads/f_food/${dto.f_image}">
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div>
+				<table class="1">
+					<tr class="title">
 						<td class="name">메&nbsp;&nbsp;&nbsp;뉴</td>
 						<td class="write">${dto.f_name}</td>
 					</tr>
-					<tr class="title">
+					<%-- <tr class="title">
 						<td class="name">가&nbsp;&nbsp;&nbsp;격</td>
 						<td class="write">${dto.f_price}</td>
 					</tr> --%>
-					<tr class="title">
-						<td class="write">
-							<img style="width: 400px; height: 300px; margin-top: 10px; margin-bottom: 10px;" src="<%=cp%>/uploads/f_food/${dto.f_image}">
-						</td>
-					</tr>
+					
 					<%-- <tr class="title">
 						<td class="name">설&nbsp;&nbsp;&nbsp;명</td>
 						<td class="write">
