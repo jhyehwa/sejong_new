@@ -42,6 +42,9 @@ public class NoticeServlet extends MyServlet{
 		} else if(uri.indexOf("update_ok.do")!=-1) {
 			// 수정 완료
 			updateSubmit(req, resp);
+		} else if(uri.indexOf("delete.do")!=-1) {
+			// 삭제
+			deleteNotice(req, resp);
 		}
 	}
 	
@@ -261,6 +264,42 @@ public class NoticeServlet extends MyServlet{
 		
 		resp.sendRedirect(cp+"/notice/list.do?page="+page);
 		
+	}
+	
+	protected void deleteNotice(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 삭제
+		HttpSession session = req.getSession();
+		LoginSession login = (LoginSession)session.getAttribute("loginMem");
+		
+		NoticeDAO dao = new NoticeDAO();
+		String cp = req.getContextPath();
+		
+		int num = Integer.parseInt(req.getParameter("num"));
+		String page = req.getParameter("page");
+		String condition = req.getParameter("condition");
+		if(condition==null) {
+			condition ="";
+		}
+		
+		String query="page="+page;
+		if(condition.length()!=0) {
+			query+="&condition="+condition;
+		}
+		
+		NoticeDTO dto = dao.readNotice(num);
+		if(dto==null) {
+			resp.sendRedirect(cp+"/notice/list.do?"+query);
+			return;
+		}
+		
+		if(!login.getLoginName().equals(dto.getWriter()) && !login.getLoginId().equals("admin")) {
+			resp.sendRedirect(cp+"/notice/list.do?"+query);
+			return;
+		}
+		
+		dao.deleteNotice(num);
+		
+		resp.sendRedirect(cp+"/notice/list.do?"+query);
 	}
 		
 

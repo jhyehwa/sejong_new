@@ -37,16 +37,7 @@ nav {
 	width: 960px;
 }
 
-.noticebutton{
-	clear: both;
-	margin: 0 auto;
-}
 
-.noticebutton a{
-	float: left;
-	color: white;
-	
-}
 
 .main-left {
 	height: 100px;
@@ -469,25 +460,41 @@ nav {
 .board-content-last {
 	margin-top: 10px;
 	color: white;
-	width: 650px;
+	width: 100%;
 	height: 40px;
 	clear: both;
-	padding-left: 370px;
 	text-align: center;
 }
-
-.board-content-button {
-	clear: both;
+.board-content-last button {
+	margin-left: 15px;
+	margin-right: 15px;
+	height: 30px;
+	width: 60px;
 }
 
-.board-content-button1 li{
-	text-align: center;
+.board-content-last a {
+	margin-left: 15px;
+	margin-right: 15px;
+	font-size: 25px;
+	color: white;
+}
+
+.noticebutton_pre a{
 	float: left;
+	font-size: 30px;
+	color: white;
+}
+
+.noticebutton_next a{
+	float: left;
+	font-size: 30px;
+	color: white;
 }
 
 .board-content-button1 li button {
 	margin-bottom: 5px;
-	margin-left: 30px;
+	margin-left: 15px;
+	margin-right: 15px;
 	height: 30px;
 	width: 60px;
 }

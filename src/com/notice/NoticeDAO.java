@@ -474,7 +474,7 @@ public class NoticeDAO {
 		String sql;
 		
 		try {
-			sql = "DELETE FROM notice WHERE num = ? ";
+			sql = "DELETE FROM notice WHERE n_num = ? ";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			result = pstmt.executeUpdate();
