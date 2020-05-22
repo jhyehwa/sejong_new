@@ -73,9 +73,10 @@ h3 {
 	text-align: left;
 	margin-left: 10px;
 	margin: 0px auto;
-	color: white;
-	border-top: 1px solid white;
-	border-bottom: 1px solid white;
+	color: #343434;
+	background: white;
+	border-top: 2px solid #7A7A7A;
+	border-bottom: 2px solid #7A7A7A;
 }
 
 .notice p {
@@ -88,14 +89,17 @@ h3 {
 	font-weight: bold;
 	line-height: 22px;
 	color: white;
+	border-bottom: 1px solid white;
 }
 
 .blank {
 	float: left;
 	width: 337px;
-	height: 250px;
+	height: 235px;
 	margin-left: 125px;
 	margin-top: 40px;	
+	margin-bottom: 20px;
+	border-bottom: 1px solid white;
 }
 
 .blank2 {
@@ -112,9 +116,10 @@ h3 {
 	font-size: 17px; 
 	font-weight: bold; 
 	text-align: left;	
-	color: white;
-	border-top: 1px solid white;
-	border-bottom: 1px solid white;
+	color: #343434;
+	background: white;
+	border-top: 2px solid #7A7A7A;
+	border-bottom: 2px solid #7A7A7A;
 }
 
 .reserve-info1 p {	
@@ -133,9 +138,10 @@ h3 {
 	font-size: 17px; 
 	font-weight: bold; 
 	text-align: left;
-	color: white;
-	border-top: 1px solid white;
-	border-bottom: 1px solid white;
+	color: #343434;
+	background: white;
+	border-top: 2px solid #7A7A7A;
+	border-bottom: 2px solid #7A7A7A;
 }
 
 .reserve-info2 p {	
@@ -208,13 +214,16 @@ h3 {
 	text-align: center;
 	margin-left: 10px;
 	margin: 0px auto;
-	color: white;
-	border-top: 1px solid white;
-	border-bottom: 1px solid white;
+	color: #343434;
+	background: white;
+	border-top: 2px solid #7A7A7A;
+	border-bottom: 2px solid #7A7A7A;
 }
 
 .searchinput {
 	margin: 0px auto;
+	border-bottom: 1px solid white;
+	width: 400px;
 }
 
 .searchinput p {
@@ -228,10 +237,54 @@ h3 {
 	line-height: 22px;	
 	color: white;
 	padding-top: 30px;
-	padding-bottom: 12px;
+	padding-bottom: 12px;	
 }
 
 .rlist-title {
 	color: #4C4C4C; 
 	font-size: 13.5px;	
+}
+
+.list-table-top {
+	width: 960px; 
+	height: 33px; 
+	margin: 0px auto; 
+	margin-top: 20px; 
+	border-spacing: 0;
+}
+
+.ltt-td {
+	color: #4C4C4C; 
+	font-weight: bold; 
+	background: white; 
+	text-align: center; 
+	font-size: 14px; 
+	border-radius: 3px;
+}
+
+.list-table-menu {
+	width: 960px; 
+	margin: 0px auto; 
+	border-spacing: 0; 
+	border-collapse: collapse;
+}
+
+.ltm-tr1 {
+	border-top: 2px solid #4C4C4C;
+	border-bottom: 2px solid #4C4C4C;
+	background: white;
+}
+
+.ltm-tr2 {
+	border-bottom: 1px solid #cccccc;
+}
+
+.ltm-th {
+	color: #4C4C4C; 
+	font-size: 17px;
+}
+
+.ltm-td {
+	color: white; 
+	font-size: 15px;	
 }

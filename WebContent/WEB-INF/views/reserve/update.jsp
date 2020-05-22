@@ -33,9 +33,44 @@
 <link rel="stylesheet" href="<%=cp%>/resource/css/reserve.css" type="text/css">
 <link rel="stylesheet" href="<%=cp%>/resource/jquery/css/smoothness/jquery-ui.min.css" type="text/css">
 
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/resource/js/util.js"></script>
 <script type="text/javascript" src="<%=cp%>/resource/jquery/js/jquery.min.js"></script>
 <script type="text/javascript">
+$(function(){
+	$("input").not($(":button")).not($(":reset")).keypress(function(evt){
+		if(evt.keyCode==13) {
+			var fields = $(this).parents("form, body").find("button, input, select");		// parents : 모든 아버지 
+			var index = fields.index(this);  // 자신의 인덱스 
+			
+			if(index > -1 && (index+1) < fields.length) {  // index가 존재하고 마지막이 아니면 
+				fields.eq(index+1).focus();
+			}
+			return false; // 이벤트 취소 
+		}		
+	});
+});
+
+$(function(){
+	$("form[name=updateForm] input+br+span").hide();
+	$("form[name=updateForm] input[type=text]").css("border", "1px solid #aaa");
+	
+	$("form[name=updateForm] input").focus(function(){
+		$(this).css("border", "2px solid #B2FA5C");
+		if($(this).attr("id")!="userIdState") {
+			$(this).next("br").next("span").show();
+		}
+	});
+	
+	$("form[name=updateForm] input").blur(function(){
+		$(this).css("border", "1px solid #EAEAEA");
+		if($(this).attr("id")!="userIdState") {
+			$(this).next("br").next("span").hide();
+		}
+	});
+	
+});
+
 function calTime() {
 	
 /* 	alert("실험"); */
@@ -133,25 +168,25 @@ function updateOk() {
 					</select></p>						
 				<p>시간 |&nbsp;					
 					<select name="r_time" class="selectField" style="width:100px;">
-						<option value="11:00">11:00</option>
-						<option value="11:30">11:30</option>
-						<option value="12:00">12:00</option>
-						<option value="12:30">12:30</option>
-						<option value="13:00">13:00</option>
-						<option value="13:30">13:30</option>
-						<option value="14:00">14:00</option>
-						<option value="14:30">14:30</option>
-						<option value="15:00">15:00</option>
-						<option value="15:30">15:30</option>
-						<option value="16:00">16:00</option>
-						<option value="16:30">16:30</option>
-						<option value="17:00">17:00</option>
-						<option value="17:30">17:30</option>
-						<option value="18:00">18:00</option>
-						<option value="18:30">18:30</option>
-						<option value="19:00">19:00</option>
-						<option value="19:30">19:30</option>
-						<option value="20:00">20:00</option>													
+						<option value="11:00" ${dto.r_time=="11:00" ? "selected='selected'" : ""}>11:00</option>
+						<option value="11:30" ${dto.r_time=="11:30" ? "selected='selected'" : ""}>11:30</option>
+						<option value="12:00" ${dto.r_time=="12:00" ? "selected='selected'" : ""}>12:00</option>
+						<option value="12:30" ${dto.r_time=="12:30" ? "selected='selected'" : ""}>12:30</option>
+						<option value="13:00" ${dto.r_time=="13:00" ? "selected='selected'" : ""}>13:00</option>
+						<option value="13:30" ${dto.r_time=="13:30" ? "selected='selected'" : ""}>13:30</option>
+						<option value="14:00" ${dto.r_time=="14:00" ? "selected='selected'" : ""}>14:00</option>
+						<option value="14:30" ${dto.r_time=="14:30" ? "selected='selected'" : ""}>14:30</option>
+						<option value="15:00" ${dto.r_time=="15:00" ? "selected='selected'" : ""}>15:00</option>
+						<option value="15:30" ${dto.r_time=="15:30" ? "selected='selected'" : ""}>15:30</option>
+						<option value="16:00" ${dto.r_time=="16:00" ? "selected='selected'" : ""}>16:00</option>
+						<option value="16:30" ${dto.r_time=="16:30" ? "selected='selected'" : ""}>16:30</option>
+						<option value="17:00" ${dto.r_time=="17:00" ? "selected='selected'" : ""}>17:00</option>
+						<option value="17:30" ${dto.r_time=="17:30" ? "selected='selected'" : ""}>17:30</option>
+						<option value="18:00" ${dto.r_time=="18:00" ? "selected='selected'" : ""}>18:00</option>
+						<option value="18:30" ${dto.r_time=="18:30" ? "selected='selected'" : ""}>18:30</option>
+						<option value="19:00" ${dto.r_time=="19:00" ? "selected='selected'" : ""}>19:00</option>
+						<option value="19:30" ${dto.r_time=="19:30" ? "selected='selected'" : ""}>19:30</option>
+						<option value="20:00" ${dto.r_time=="20:00" ? "selected='selected'" : ""}>20:00</option>													
 					</select>						
 				</p>
 				<p>인원 |&nbsp;

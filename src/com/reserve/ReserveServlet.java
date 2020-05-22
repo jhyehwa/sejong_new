@@ -23,7 +23,9 @@ public class ReserveServlet extends MyServlet {
 	protected void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		String cp = req.getContextPath();
-		String uri = req.getRequestURI();	
+		String uri = req.getRequestURI();
+		
+		
 		
 		// 예약 리스트 (관리자)
 		if(uri.indexOf("list.do") != -1) {			
@@ -128,7 +130,8 @@ public class ReserveServlet extends MyServlet {
 	}
 	
 	private void reserveForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("mode", "reserve");		
+	
+		req.setAttribute("mode", "reserve");	
 		forward(req, resp, "/WEB-INF/views/reserve/reserve.jsp");	
 	}
 	

@@ -1,4 +1,4 @@
-﻿<%@page import="java.text.SimpleDateFormat"%>
+﻿s<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.util.Date"%>
 <%@ page contentType="text/html; charset=UTF-8" %>
@@ -20,7 +20,7 @@
    cal.set(y, m, 1);
    cal.add(Calendar.DATE, -1);
    
-   int lastDay = cal.get(Calendar.DATE); 
+   int lastDay = cal.get(Calendar.DATE);  
 %>
 
 <!DOCTYPE html>
@@ -35,18 +35,48 @@
 
 <script type="text/javascript" src="<%=cp%>/resource/js/util.js"></script>
 <script type="text/javascript" src="<%=cp%>/resource/jquery/js/jquery.min.js"></script>
-<script type="text/javascript">
-function calTime() {
-	
-/* 	alert("실험"); */
-	
-	var now = new Date();
-	var y = now.getFullYear();
-	var m = now.getMonth();
-	var d = now.getDate();
-	
-	return m;	
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<style type="text/css">
+input:focus, textarea:focus {
+	outline: none;
 }
+</style>
+
+<script type="text/javascript">
+$(function(){
+	$("input").not($(":button")).not($(":reset")).keypress(function(evt){
+		if(evt.keyCode==13) {
+			var fields = $(this).parents("form, body").find("button, input, select");		// parents : 모든 아버지 
+			var index = fields.index(this);  // 자신의 인덱스 
+			
+			if(index > -1 && (index+1) < fields.length) {  // index가 존재하고 마지막이 아니면 
+				fields.eq(index+1).focus();
+			}
+			return false; // 이벤트 취소 
+		}		
+	});
+});
+
+$(function(){
+	$("form[name=reserveForm] input+br+span").hide();
+	$("form[name=reserveForm] input[type=text]").css("border", "1px solid #aaa");
+	
+	$("form[name=reserveForm] input").focus(function(){
+		$(this).css("border", "2px solid #B2FA5C");
+		if($(this).attr("id")!="userIdState") {
+			$(this).next("br").next("span").show();
+		}
+	});
+	
+	$("form[name=reserveForm] input").blur(function(){
+		$(this).css("border", "1px solid #EAEAEA");
+		if($(this).attr("id")!="userIdState") {
+			$(this).next("br").next("span").hide();
+		}
+	});
+	
+});
 
 function sendOk() {
     var f = document.reserveForm;   
@@ -71,6 +101,8 @@ function sendOk() {
         f.r_email.focus();
         return;
     } 
+    
+    
 
 	f.action="<%=cp%>/reserve/${mode}_ok.do";
 
@@ -78,6 +110,28 @@ function sendOk() {
     
     alert("예약이 완료 되었습니다.")
 } 
+
+function checkDate() {
+	var f = document.reserveForm;
+	
+	var todayDate = new Date();
+	
+	var ty = todayDate.getFullYear();
+	var tm = todayDate.getMonth()+1;
+	var td = todayDate.getDate();
+	
+	var y = f.r_year.value;
+	var m = f.r_month.value - 1;
+	var d = f.r_day.value;
+	
+	var reserveDate = new Date(y, m, d);
+	
+	var differ = (reserveDate.getTime() - todayDate.getTime()) / (1000*60*60*24);
+	
+	if(differ <= -1) {
+		alert("현재 날짜 ("+ ty + "년 " + tm + "월 " + td + "일) 이후만 예약 가능합니다.");
+	}		
+}
 
 </script>
 </head>
@@ -91,8 +145,10 @@ function sendOk() {
 	<p class="hold-menu">Reservation</p>
 	<ul class="sub-menu">
 		<li><a href="<%=cp%>/reserve/reserve.do"><span style="color: #B2FA5C;">Reserve</span></a></li>
-		<li><a href="<%=cp%>/reserve/checked.do">Check</a></li>			
-		<li><a href="<%=cp%>/reserve/list.do">List</a></li>		
+		<li><a href="<%=cp%>/reserve/checked.do">Check</a></li>		
+		<c:if test="${sessionScope.loginMem.loginId == 'admin'}">
+			<li><a href="<%=cp%>/reserve/list.do">List</a></li>	
+		</c:if>		
 	</ul>
 </div>
 	
@@ -118,16 +174,16 @@ function sendOk() {
 			</div>
 			<div class="reserve-info1">
 				<p>날짜 |&nbsp; 					
-					<select name="r_year" class="selectField" onchange="calTime()">
+					<select name="r_year" class="selectField">
 						<option value="<%=y%>"><%=y%>년</option>											
 					</select>
-					<select name="r_month" class="selectField" onchange="calTime()">
-				<%for(int i=m; i<=12; i++) { %>
+					<select name="r_month" class="selectField">
+				<%for(int i=1; i<=12; i++) { %>
 						<option value="<%=i%>"><%=i%>월</option>
 				<% } %>					
 					</select>
-						<select name="r_day" class="selectField" onchange="calTime()">						
-				<%for(int i=d; i<=lastDay; i++) { %>
+						<select name="r_day" class="selectField" onchange="checkDate();">						
+				<%for(int i=1; i<=31; i++) { %>
 						<option value="<%=i%>"><%=i%>일</option>
 				<% } %>						
 					</select></p>						
@@ -175,15 +231,23 @@ function sendOk() {
 			
 				<p>이&nbsp;&nbsp;&nbsp;&nbsp;름&nbsp; |&nbsp;  
 					<input type="text" name="r_name" maxlength="20" class="selectField2">
+					<br><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														* 방문하시는 분의 성함을 입력 해 주세요.</span>
 				</p> 
 				<p>연 락 처&nbsp; |&nbsp;  
 					<input type="text" name="r_tel" maxlength="20" placeholder=" 010-0000-0000" class="selectField2">
+					<br><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														* 휴대폰 번호를 입력 해 주세요.</span>
 				</p>
 				<p>이 메 일&nbsp; |&nbsp;  
 					<input type="text" name="r_email" maxlength="20" placeholder=" sejong@sejong.com" class="selectField2">
+					<br><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														* 입력하신 이메일로 예약 내역이 발송됩니다.</span>
 				</p>
 				<p>요청사항 |&nbsp;  
 					<input type="text" name="r_request" maxlength="20" class="selectField2" style="width: 220px;">
+					<br><span style="font-size: 12px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														* 예시) 조용한 자리로 부탁드립니다.</span>
 				</p>					
 					
 			</div>			

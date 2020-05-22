@@ -19,10 +19,40 @@
 <link rel="stylesheet" href="<%=cp%>/resource/css/layout.css" type="text/css">
 <link rel="stylesheet" href="<%=cp%>/resource/css/reserve.css" type="text/css">
 <link rel="stylesheet" href="<%=cp%>/resource/jquery/css/smoothness/jquery-ui.min.css" type="text/css">
-
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/resource/js/util.js"></script>
 <script type="text/javascript" src="<%=cp%>/resource/jquery/js/jquery.min.js"></script>
+
+<style type="text/css">
+input:focus, textarea:focus {
+	outline: none;
+}
+</style>
+
 <script type="text/javascript">
+$(function(){
+	$("input").not($(":button")).not($(":reset")).keypress(function(evt){
+		if(evt.keyCode==13) {
+			var fields = $(this).parents("form, body").find("button, input, select");		// parents : 모든 아버지 
+			var index = fields.index(this);  // 자신의 인덱스 
+			
+			if(index > -1 && (index+1) < fields.length) {  // index가 존재하고 마지막이 아니면 
+				fields.eq(index+1).focus();
+			}
+			return false; // 이벤트 취소 
+		}		
+	});
+});
+
+$(function(){
+	$("form[name=checkForm] input").focus(function(){
+		$(this).css("border", "2px solid #B2FA5C");		
+	});
+	
+	$("form[name=checkForm] input").blur(function(){
+		$(this).css("border", "1px solid #EAEAEA");	
+	});	
+});
 
 function sendOk() {
     var f = document.checkForm;   
@@ -69,7 +99,9 @@ function deleteReserve(num) {
 	<ul class="sub-menu">
 		<li><a href="<%=cp%>/reserve/reserve.do">Reserve</a></li>
 		<li><a href="<%=cp%>/reserve/checked.do"><span style="color: #B2FA5C;">Check</span></a></li>
-		<li><a href="<%=cp%>/reserve/list.do">List</a></li>		
+		<c:if test="${sessionScope.loginMem.loginId == 'admin'}">
+			<li><a href="<%=cp%>/reserve/list.do">List</a></li>	
+		</c:if>		
 	</ul>
 </div>
 	
@@ -89,10 +121,10 @@ function deleteReserve(num) {
 			</p> 
 			<p style="margin-bottom: 20px;">연 락 처&nbsp; |&nbsp;  
 				<input type="text" name="r_tel" maxlength="20" placeholder=" 010-0000-0000" class="selectField2">
-			</p>				
+			</p>			
 		</div>
 	</form>	
-	<p style="border: 1px solid white; width: 400px; margin: 0px auto;"></p>
+<!-- 	<p style="border: 1px solid white; width: 400px; margin: 0px auto;"></p>	 -->		
 
 	<div class="button">
 		<button type="button" class="btn" onclick="sendOk();">예약 조회</button>

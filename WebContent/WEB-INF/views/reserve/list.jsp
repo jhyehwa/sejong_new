@@ -23,11 +23,16 @@
 <link rel="stylesheet"
 	href="<%=cp%>/resource/jquery/css/smoothness/jquery-ui.min.css"
 	type="text/css">
-
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="<%=cp%>/resource/js/util.js"></script>
 <script type="text/javascript"
 	src="<%=cp%>/resource/jquery/js/jquery.min.js"></script>
 <script type="text/javascript">
+
+$(function(){
+	$(".list-table-menu .ltm-tr2:nth-child(2n+1)").css("background", "#353535");
+});
+
 function searchList() {
 	var f=document.searchForm;
 	f.submit();
@@ -45,7 +50,9 @@ function searchList() {
 		<ul class="sub-menu">
 			<li><a href="<%=cp%>/reserve/reserve.do"><span>Reserve</span></a></li>
 			<li><a href="<%=cp%>/reserve/checked.do">Check</a></li>		
-			<li><a href="<%=cp%>/reserve/list.do" style="color: #B2FA5C;">List</a></li>		
+			<c:if test="${sessionScope.loginMem.loginId == 'admin'}">
+				<li><a href="<%=cp%>/reserve/list.do"><span style="color: #B2FA5C;">List</span></a></li>	
+			</c:if>			
 		</ul>
 	</div>
 
@@ -55,45 +62,42 @@ function searchList() {
 			<div class="reserve">
 
 			<h3>| 예약 리스트</h3>			
-				<table style="width: 960px; height: 33px; margin: 0px auto; border-spacing: 0;">
+				<table class="list-table-top">
 					<tr height="28">
-						<td class="rlt" align="left" width="14%" style="color: #4C4C4C; font-weight: bold; background: white; text-align: center; font-size: 14px; border-radius: 3px;">
+						<td class="ltt-td" align="left" width="14%">
 							${dataCount}개(${page}/${total_page} 페이지)</td>	
 						<td align="center">&nbsp;</td>
-					<td class="rlt" align="right" width="9%" style="color: white; font-weight: bold; background: white; text-align: center; font-size: 14px; border-radius: 3px;">
+					<td class="ltt-td" align="right" width="9%">
 						<a href="javascript:location.href='<%=cp%>/reserve/list.do';" style="text-decoration: none;">
 						    새로고침</a></td>								
 					</tr>	
 					<tr> <td></td> <td></td> <td></td>  </tr>
 				</table>	
 
-				<table
-					style="width: 960px; margin: 0px auto; border-spacing: 0; border-collapse: collapse;">
-					<tr align="center" height="40"
-						style="border-top: 2px solid #4C4C4C; border-bottom: 2px solid #4C4C4C; background: white;">
-						<th width="90" style="color: #4C4C4C; font-size: 17px;">예약번호</th>
-						<th width="90" style="color: #4C4C4C; font-size: 17px;">예약자명</th>
-						<th width="90" style="color: #4C4C4C; font-size: 17px;">예약날짜</th>
-						<th width="90" style="color: #4C4C4C; font-size: 17px;">예약시간</th>
-						<th width="90" style="color: #4C4C4C; font-size: 17px;">예약인원</th>
-						<th width="150" style="color: #4C4C4C; font-size: 17px;">요청사항</th>
+				<table class="list-table-menu">
+					<tr class="ltm-tr1" align="center" height="40">
+						<th class="ltm-th" width="90">예약번호</th>
+						<th class="ltm-th" width="90">예약자명</th>
+						<th class="ltm-th" width="90">예약날짜</th>
+						<th class="ltm-th" width="90">예약시간</th>
+						<th class="ltm-th" width="90">예약인원</th>
+						<th class="ltm-th" width="150">요청사항</th>
 					</tr>
 					<c:forEach var="dto" items="${list}">
-						<tr align="center" height="38"
-							style="border-bottom: 1px solid #cccccc;">
-							<td style="color: white; font-size: 15px;">${dto.r_num}</td>
-							<td style="color: white; font-size: 15px;">${dto.r_name}</td>
-							<td style="color: white; font-size: 15px;">${dto.r_date}</td>
-							<td style="color: white; font-size: 15px;">${dto.r_time}</td>
-							<td style="color: white; font-size: 15px;">${dto.r_count}</td>
-							<td style="color: white; font-size: 15px;">${dto.r_request}</td>
+						<tr class="ltm-tr2" align="center" height="38">
+							<td class="ltm-td">${dto.r_num}</td>
+							<td class="ltm-td">${dto.r_name}</td>
+							<td class="ltm-td">${dto.r_date}</td>
+							<td class="ltm-td">${dto.r_time}</td>
+							<td class="ltm-td">${dto.r_count}</td>
+							<td class="ltm-td">${dto.r_request}</td>
 						</tr>
 					</c:forEach>
 				</table>
 
 				<table style="width: 100%; margin: 0px auto; border-spacing: 0px;">
 					<tr height="35">
-						<td align="center" style="color: white;">${dataCount==0?"등록된 게시물이 없습니다.":paging}</td>
+						<td align="center" style="color: white;" >${dataCount==0?"예약 내역이 없습니다.":paging}</td>
 					</tr>
 				</table>
 
