@@ -14,12 +14,12 @@
             <c:if test="${empty sessionScope.loginMem}">
                 <a href="<%=cp%>/memberSj/login.mem">LOGIN</a>
                     &nbsp;|&nbsp;
-                <a href="<%=cp%>/">JOIN</a>
+                <a href="<%=cp%>">JOIN</a>
             </c:if>
             <c:if test="${not empty sessionScope.loginMem}">
                 <span style="color:blue;">${sessionScope.loginMem.loginName}</span>님
                     &nbsp;|&nbsp;
-                    <a href="<%=cp%>/">LOGOUT</a>
+                    <a href="<%=cp%>/memberSj/logout.mem">LOGOUT</a>
                     &nbsp;|&nbsp;
                     <a href="<%=cp%>/">UPDATE</a>
             </c:if> 

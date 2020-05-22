@@ -1,6 +1,7 @@
 package com.board;
 
 public class BoardDTO {
+	private int listNum;
 	private int num;
 	private String title;
 	private String content;
@@ -51,4 +52,11 @@ public class BoardDTO {
 	public void setCreated(String created) {
 		this.created = created;
 	}
+	public int getListNum() {
+		return listNum;
+	}
+	public void setListNum(int listNum) {
+		this.listNum = listNum;
+	}
+	
 }

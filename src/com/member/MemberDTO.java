@@ -8,7 +8,7 @@ public class MemberDTO {
 	private String created;
 	private String birth;
 	private String email;
-	private String tel,tel1,tel2,tel3;
+	private String tel;
 	private String addr1;
 	private String addr2;
 	
@@ -60,24 +60,6 @@ public class MemberDTO {
 	}
 	public void setTel(String tel) {
 		this.tel = tel;
-	}
-	public String getTel1() {
-		return tel1;
-	}
-	public void setTel1(String tel1) {
-		this.tel1 = tel1;
-	}
-	public String getTel2() {
-		return tel2;
-	}
-	public void setTel2(String tel2) {
-		this.tel2 = tel2;
-	}
-	public String getTel3() {
-		return tel3;
-	}
-	public void setTel3(String tel3) {
-		this.tel3 = tel3;
 	}
 	public String getAddr1() {
 		return addr1;

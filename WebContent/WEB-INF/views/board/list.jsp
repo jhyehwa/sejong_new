@@ -9,13 +9,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="<%=cp%>/resource/css/information.css"
+<link rel="stylesheet" href="<%=cp%>/resource/css/board.css"
 	type="text/css">
 <title>Insert title here</title>
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <script type="text/javascript">
 	function boardSearch() {
 		var f = document.boardSearch;
+		
+		if(f.keyword == null){
+			alert("")
+		}
+		
+		
 		f.submit();
 	}
 </script>
@@ -39,35 +45,43 @@
 
 		<c:forEach var="dto" items="${list}">
 			<ul class="info-input">
-				<li class="num">${dto.num}</li>
-				<li class="title"><a href="${articleUrl}&num=${dto.num}">${dto.title}</a></li>
+				<li class="num">${dto.listNum}</li>
+				<li class="title"><a href="${articleUrl}&num=${dto.num}&rows=${rows}">${dto.title}</a>
+				</li>
 				<li class="name">${dto.writer}</li>
 				<li class="date">${dto.created}</li>
 				<li class="hit">${dto.hitCount}</li>
 			</ul>
 		</c:forEach>
 
-		<ul class="nextpage">
-			<li><a href="#">1</a></li>
+		<ul class="nextpage" style="padding-bottom: 10px;">
+			<li><span  style="color: white;">${dataCount==0 ? "등록된 게시물이 존재하지 않습니다." : paging}</span></li>
 		</ul>
 
 		<form action="<%=cp%>/board/list.board" method="post"
 			name="boardSearch">
-			<ul class="info-bottom">
-				<li><select class="serch-option" name="type">
-						<option value="title" ${type=="title"?"selected='selected'":""}>제목</option>
-						<option value="content"
-							${type=="content"?"selected='selected'":""}>내용</option>
-						<option value="writer" ${type=="writer"?"selected='selected'":""}>작성자</option>
-						<option value="created"
-							${type=="created"?"selected='selected'":""}>작성날짜</option>
-				</select></li>
-				<li><input class="serch-text" type="text" id="keyword"
-					value="${keyword}"></li>
-				<li><button class="serch-button" onclick="">검색</button> <a
-					href="<%=cp%>/board/insert.board" class="write-board">글쓰기</a></li>
-
+			<ul class="info-bottom-1" style="magin-top : 10px; color: white; widows: 60%; height: 40px; margin-left: 200px;">
+				<li style="float: left;">
+				<select class="serch-option" name="type">
+						<option value="" ${type==""?"selected='selected'":""}>선택</option>
+						<option value="b_title" ${type=="b_title"?"selected='selected'":""}>제목</option>
+						<option value="b_content"
+							${type=="b_content"?"selected='selected'":""}>내용</option>
+						<option value="b_writer" ${type=="b_writer"?"selected='selected'":""}>작성자</option>
+						<option value="b_created"
+							${type=="b_created"?"selected='selected'":""}>작성날짜</option>
+				</select>
+				</li>
+				
+				<li style="float: left;">
+				<input class="serch-text" type="text" id="keyword" name="keyword" value="${keyword}">
+				<button class="serch-button" onclick="boardSearch()">검색</button>
+				</li>
+				<li style="float: left;">
+				<span style="text-align: right;"><a href="<%=cp%>/board/insert.board" class="write-board">글쓰기</a></span>
+				</li>
 			</ul>
+			
 		</form>
 
 	</div>
@@ -77,7 +91,7 @@
 		<ul class="sub-menu">
 			<li><a href="information_event.html"><span
 					style="color: #B2FA5C;">Notice/Event</span></a></li>
-			<li><a href="information_noticeboard.html">FreeBoard</a></li>
+			<li><a href="<%=cp%>/board/list.board">FreeBoard</a></li>
 			<li><a href="information_directions.html">Directions</a></li>
 		</ul>
 	</div>

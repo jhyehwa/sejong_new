@@ -57,4 +57,48 @@ public class MemberDAO {
 		}
 		return dto;
 	}
+	
+	
+	public void insertMember(MemberDTO dto) {
+		
+		String sql;
+		PreparedStatement pstmt = null;
+		
+		try {
+			sql = "INSERT INTO member1(m_num, m_id, m_password, m_name) VALUES(SEQ_MEM.NEXTVAL,?,?,?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPassword());
+			pstmt.setString(3, dto.getName());
+			pstmt.executeUpdate();
+			pstmt.close();
+			pstmt = null;
+			
+			
+			sql = "INSERT INTO member2(m_birth, m_email, m_tel, m_addr1, m_addr2) VALUES(?,?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getBirth());
+			pstmt.setString(2, dto.getEmail());
+			pstmt.setString(3, dto.getTel());
+			pstmt.setString(4, dto.getAddr1());
+			pstmt.setString(5, dto.getAddr2());
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (Exception e2) {
+				}
+			}
+		}
+	}
+	
+//	public void 
 }

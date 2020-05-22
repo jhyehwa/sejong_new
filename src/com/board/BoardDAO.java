@@ -19,7 +19,7 @@ public class BoardDAO {
 		String sql;
 		
 		try {
-			sql = "SELECT b_num, b_title, b_content, b_id, b_writer FROM board where b_num = ?";
+			sql = "SELECT b_num, b_title, b_content, b_id, b_writer, b_hitCount, TO_CHAR(b_created,'YYYY-MM-DD') created FROM board where b_num = ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -34,6 +34,8 @@ public class BoardDAO {
 				dto.setContent(rs.getString("b_content"));
 				dto.setId(rs.getString("b_id"));
 				dto.setWriter(rs.getString("b_writer"));
+				dto.setCreated(rs.getString("created"));
+				dto.setHitCount(rs.getInt("b_hitCount"));
 			}
 			
 		}  catch (Exception e) {
@@ -100,7 +102,7 @@ public class BoardDAO {
 		try {
 			if(type.equals("created")) {
 				keyword = keyword.replaceAll("(\\-|\\/|\\.)", "");
-				sql = "SELECT NVL(COUNT(*), 0) FROM board b  JOIN member1 m1 ON b.b_id = m1.m_id WHERE TO_CHAR(b_created, 'YYYYMMDD') = ?";
+				sql = "SELECT NVL(COUNT(*), 0) FROM board b  JOIN member1 m1 ON b.b_id = m1.m_id WHERE TO_CHAR(b_created, 'YYYY-MM-DD') = ?";
 			}else if(type.equals("writer")) {
 				sql = "SELECT NVL(COUNT(*), 0) FROM board b  JOIN member1 m1 ON b.b_id = m1.m_id WHERE INSTR(m_name, ?) = 1";
 			}else {
@@ -196,8 +198,10 @@ public class BoardDAO {
 		ResultSet rs = null;
 		StringBuilder sb = new StringBuilder();
 		
+		
+		
 		try {
-			sb.append("SELECT b_num, b_title,m_name ,b_content,b.b_id, b_writer, b_hitCount,");
+			sb.append("SELECT b_num, b_title ,m_name ,b_content,b.b_id, b_writer, b_hitCount,");
 			sb.append(" TO_CHAR(b_created, 'YYYY-MM-DD') created");
 			sb.append(" FROM board b");
 			sb.append(" JOIN member1 m1 ON b.b_id = m1.m_id");
@@ -208,7 +212,7 @@ public class BoardDAO {
 			}else if(type.equals("writer")) {
 				sb.append(" WHERE INSTR(m_name, ?) = 1");
 			}else {
-				sb.append(" WHERE INSTR(" + type + ", ?) >= 1");
+				sb.append(" WHERE INSTR( "+ type + ", ?) >= 1");
 			}
 			
 			sb.append(" ORDER BY b_num DESC");
@@ -225,7 +229,6 @@ public class BoardDAO {
 			while(rs.next()) {
 				dto = new BoardDTO();
 				dto.setNum(rs.getInt("b_num"));
-				dto.setTitle(rs.getString("m_name"));
 				dto.setTitle(rs.getString("b_title"));
 				dto.setContent(rs.getString("b_content"));
 				dto.setId(rs.getString("b_id"));
@@ -302,7 +305,7 @@ public class BoardDAO {
 				keyword = keyword.replaceAll("-", "");
 				sql += " WHERE(TO_CHAR(created, 'YYYY-MM-DD') = ?)";
 			}else {
-				sql += " WHERE (INSTR(" + type + ", ? ) > 0";
+				sql += " WHERE INSTR(" + type + ", ? ) > 0";
 			}
 			sql += " AND(b_num > ? ) ";
 			sql += " ORDER BY b_num ASC";
@@ -398,5 +401,83 @@ public class BoardDAO {
 			}
 		}
 		return dto;
+	}
+	
+	public int updateBoard(BoardDTO dto) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			sql = "UPDATE board SET b_title = ? , b_content = ? WHERE b_num = ?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getTitle());
+			pstmt.setString(2, dto.getContent());
+			pstmt.setInt(3, dto.getNum());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		return result;
+	}
+	
+	public int deleteBoard(int num) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql;
+		
+		try {
+			sql = "DELETE FROM board WHERE b_num = ?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			result = pstmt.executeUpdate();	
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		return result;
+	}
+	
+	public int hitCount(int num) {
+		int result=0;
+		String sql;
+		PreparedStatement pstmt = null;
+		
+		try {
+			sql = "UPDATE board SET b_hitCount = b_hitCount+1 WHERE b_num = ?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			result = pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}  finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+		return result;
 	}
 }
