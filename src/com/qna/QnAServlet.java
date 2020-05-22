@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,7 @@ import com.member.LoginSession;
 import com.util.MyServlet;
 import com.util.MyUtil;
 
+@WebServlet("/qna/*")
 public class QnAServlet extends MyServlet{
 	private static final long serialVersionUID = 1L;
 
@@ -26,8 +28,8 @@ public class QnAServlet extends MyServlet{
 		HttpSession session = req.getSession();
 		LoginSession login = (LoginSession)session.getAttribute("loginMem");
 		
-		if(uri.indexOf("list.do")!=-1 && login==null ) {
-			resp.sendRedirect(cp+"/");			// 로그인폼으로....
+		if(login==null ) {
+			resp.sendRedirect(cp+"/memberSj/login.mem");			// 로그인폼으로....
 			return;
 		}
 		

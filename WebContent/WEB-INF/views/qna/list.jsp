@@ -13,7 +13,7 @@
 <div class="header">
 	<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 </div>
-
+<h3>하이</h3>
 
 <div class="footer">
 	<jsp:include page="/WEB-INF/views/layout/footer.jsp" />

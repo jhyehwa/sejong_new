@@ -14,7 +14,7 @@
             <c:if test="${empty sessionScope.loginMem}">
                 <a href="<%=cp%>/memberSj/login.mem">LOGIN</a>
                     &nbsp;|&nbsp;
-                <a href="<%=cp%>">JOIN</a>
+                <a href="<%=cp%>/memberSj/insert.mem">JOIN</a>
             </c:if>
             <c:if test="${not empty sessionScope.loginMem}">
                 <span style="color:blue;">${sessionScope.loginMem.loginName}</span>님
@@ -48,7 +48,9 @@
             <ul class="menu_sub">
                 <li><a href="<%=cp%>/reserve/reserve.do">Reserve</a></li>
                 <li><a href="<%=cp%>/reserve/checked.do">Check</a></li>               
-                <li><a href="<%=cp%>/reserve/list.do">List</a></li>						<!-- 관리자로 로그인 할 때만 보이는 메뉴 -->
+                <c:if test="${sessionScope.loginMem.loginId == 'admin'}">
+      		    	<li><a href="<%=cp%>/reserve/list.do">List</a></li>   
+      			</c:if>   						<!-- 관리자로 로그인 할 때만 보이는 메뉴 -->
             </ul>
         </li>
 
@@ -57,7 +59,7 @@
             <ul class="menu_sub">
                 <li><a href="<%=cp %>/notice/list.do">Notice/Event</a></li>
                 <li><a href="<%=cp %>/qna/list.do">QnA</a></li>
-                <li><a href="<%=cp %>/board/list.do">FreeBoard</a></li>
+                <li><a href="<%=cp %>/board/list.board">FreeBoard</a></li>
                 <li><a href="<%=cp %>/map/showmap.do">Directions</a></li>      
             </ul>
         </li>   
