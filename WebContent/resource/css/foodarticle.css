@@ -2,7 +2,7 @@
 
 .body_title {
 	float: left;
-	margin-top: 80px;
+	margin-top: 20px;
 	padding-bottom: 30px;
 }
 
@@ -17,11 +17,12 @@
 }
 
 .menu_list {
-	width: 700px;
+	width: 800px;
 	border-spacing: 0;
 	border-collapse: collapse;
 	margin: 0 auto;
 	color: white;
+	background: lime;
 }
 
 .title {
@@ -30,11 +31,11 @@
 	height: 45px;
 }
 
-.name {
-	/* background: #d2d2d2; */
+/* .name {
+	background: #d2d2d2;
 	width: 150px;
 	padding: 5px;
-}
+} */
 
 .write {
 	width: 550px;

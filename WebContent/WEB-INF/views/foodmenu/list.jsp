@@ -19,6 +19,10 @@
 		var url = "${articleUrl}&f_num=" + f_num;
 		location.href = url;
 	}
+	
+	$(function(){
+		$(".image").css("cursor", "pointer");
+	});
 </script>
 </head>
 <body>
@@ -39,12 +43,12 @@
 					<c:if test="${status.index == 0}">
 						<tr>
 					</c:if>
-					<c:if test="${status.index != 0 && status.index % 3 == 0}">
+					<c:if test="${status.index != 0 && status.index % 2 == 0}">
 						<c:out value="</tr><tr>" escapeXml="false"/>
 					</c:if>
 					<td class="image_box">
 						<div class="image_list">
-							<img class="image" src="<%=cp%>/uploads/food/${dto.f_image}">
+							<img class="image" src="<%=cp%>/uploads/f_food/${dto.f_image}">
 						</div>
 						<div class="name">
 							<span onclick="javascript:article('${dto.f_num}');">
@@ -57,10 +61,10 @@
 					</td>
 				</c:forEach>
 				<c:set var="n" value="${list.size()}"/>
-				<c:if test="${n > 0 && n % 3 != 0}">
-					<c:forEach var="i" begin="${n % 3 + 1}" end="3" step="1">
+				<c:if test="${n > 0 && n % 2 != 0}">
+					<c:forEach var="i" begin="${n % 2 + 1}" end="2" step="1">
 						<td>
-							<div>&nbsp;</div>
+							<!-- <div>&nbsp;</div> -->
 						</td>
 					</c:forEach>
 				</c:if>
@@ -86,8 +90,6 @@
 			</table>
 		</div>
 	</div>
-
-	
 
 	<div class="footer">
 		<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>

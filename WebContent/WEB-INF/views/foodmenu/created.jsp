@@ -19,39 +19,39 @@
     function sendFood() {
         var f = document.FoodMenuForm;
 
-    	var str = f.name.value;
+    	var str = f.f_name.value;
         if(!str) {
             alert("메뉴를 입력하세요.");
-            f.name.focus();
+            f.f_name.focus();
             return;
         }
         
-        var str = f.price.value;
+        var str = f.f_price.value;
         if(!str) {
             alert("가격을 입력하세요.");
-            f.price.focus();
+            f.f_price.focus();
             return;
         }
 
-        str = f.type.value;
+        str = f.f_type.value;
     	str = str.trim();
         if(!str) {
             alert("종류를 선택해주세요 ");
-            f.type.focus();
+            f.f_type.focus();
             return;
         }
         
-    	str = f.intro.value;
+    	str = f.f_intro.value;
         if(!str) {
             alert("설명을 입력하세요.");
-            f.intro.focus();
+            f.f_intro.focus();
             return;
         }
         
-        str = f.food.value;
+        str = f.f_food.value;
         if(!str) {
         	alert("사진을 첨부해주세요.");
-        	f.food.focus();
+        	f.f_food.focus();
         	return;
         }
         
@@ -61,10 +61,10 @@
 	}
     
     <c:if test="${mode == 'update'}">
-	function deleteFile(f_num) {
-		var url = "<%=cp%>/foodmenu/deleteFile.do?f_num=" + f_num + "&page=${page}";
-		location.href = url;
-	}
+		function deleteFile(f_num) {
+			var url = "<%=cp%>/foodmenu/deleteFile.do?f_num=" + f_num + "&page=${page}";
+			location.href = url;
+		}
 	</c:if>
 </script>
 </head>
@@ -75,7 +75,7 @@
 	<div class="container">
 		<div class="body-container">
 			<div class="body_title">
-				<h2>| Registration</h2>
+				<h3>| Registration</h3>
 			</div>
 			
 			<div class="menu">
@@ -84,19 +84,19 @@
 						<tr class="title">
 							<td class="name">메&nbsp;&nbsp;&nbsp;뉴</td>
 							<td class="write">
-								<input type="text" name="name" value="${dto.f_name}">
+								<input type="text" name="f_name" value="${dto.f_name}">
 							</td>
 						</tr>
 						<tr class="title">
 							<td class="name">가&nbsp;&nbsp;&nbsp;격</td>
 							<td class="write">
-								<input type="text" name="price" value="${dto.f_price}">
+								<input type="text" name="f_price" value="${dto.f_price}">
 							</td>
 						</tr>
 						<tr class="title">
 							<td class="name">종&nbsp;&nbsp;&nbsp;류</td>
 							<td class="write">
-								<select name="type">
+								<select name="f_type">
 									<option value="">종류선택</option>
 									<option value="main" ${dto.f_type == "main" ? "selected='selected'" : ""}>Steak</option>
 									<option value="side" ${dto.f_type == "side" ? "selected='selected'" : ""}>Side</option>
@@ -108,20 +108,20 @@
 						<tr class="title">
 							<td class="name">설&nbsp;&nbsp;&nbsp;명</td>
 							<td class="write">
-								<textarea rows="12" name="intro">${dto.f_intro}</textarea>
+								<textarea rows="12" name="f_intro">${dto.f_intro}</textarea>
 							</td>
 						</tr>
 						<tr class="title">
 							<td class="name">이미지</td>
 							<td class="write">
-								<input type="file" name="food">
+								<input type="file" name="f_food">
 							</td>
 						</tr>
 						
 						<c:if test="${mode == 'update'}">
-							<tr>
-								<td>첨부 된 파일</td>
-								<td>
+							<tr class="title">
+								<td class="name">첨부 된 파일</td>
+								<td class="image_delete">
 									${dto.f_image}
 										| <a href="javascript:deleteFile('${dto.f_num}');">삭제</a>
 								</td>
@@ -136,8 +136,8 @@
 			        			<button type="button" class="btn" onclick="javascript:location.href='<%=cp%>/foodmenu/list.do';">${mode == 'update' ? '수정취소' : '등록취소'}</button>
 			         			
 			         			<c:if test="${mode == 'update'}">
-                             		<input type="hidden" name="num" value="${dto.f_num}">
-                            		<input type="hidden" name="image" value="${dto.f_image}">
+                             		<input type="hidden" name="f_num" value="${dto.f_num}">
+                            		<input type="hidden" name="f_image" value="${dto.f_image}">
 									<input type="hidden" name="page" value="${page}">
 			        			</c:if>
 			      			</td>

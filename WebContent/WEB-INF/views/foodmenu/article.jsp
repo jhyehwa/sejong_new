@@ -17,20 +17,22 @@
 
 <script type="text/javascript">
 	function deleteFoodMenu(f_num) {
-		<c:if test="${sessionScope.loginMem.loginId== 'admin'}">
-		    if(confirm("게시물을 삭제 하시겠습니까 ?")) {
-		    	 var url = "<%=cp%>/foodmenu/delete.do?f_num = " + num + "&page = ${page}";
-		    	 location.href=url;
-		    }	
+		<c:if test="${sessionScope.loginMem.loginId == 'admin'}">			
+			if(confirm("게시물을 삭제 하시겠습니까 ?")) {
+			var url = "<%=cp%>/foodmenu/delete.do?f_num=" + f_num + "&page = ${page}";
+				location.href=url;
+		    }
 		</c:if>
 	}
 	
 	function updateFoodMenu(f_num) {
 		<c:if test="${sessionScope.loginMem.loginId== 'admin'}">
-		    var url="<%=cp%>/foodmenu/update.do?f_num = " + f_num + "&page = ${page}";
+			var page = "${page}";
+			var query = "f_num=" + ${dto.f_num} + "&page=" + page
+		    var url = "<%=cp%>/foodmenu/update.do?" + query;
 		    location.href=url;
 		</c:if>
-		}
+	}
 </script>
 </head>
 <body>
@@ -45,38 +47,34 @@
 			
 			<div class="menu">
 				<table class="menu_list">
-					<tr class="title">
+					<%-- <tr class="title">
 						<td class="name">메&nbsp;&nbsp;&nbsp;뉴</td>
 						<td class="write">${dto.f_name}</td>
 					</tr>
 					<tr class="title">
 						<td class="name">가&nbsp;&nbsp;&nbsp;격</td>
 						<td class="write">${dto.f_price}</td>
-					</tr>
+					</tr> --%>
 					<tr class="title">
+						<td class="write">
+							<img style="width: 400px; height: 300px; margin-top: 10px; margin-bottom: 10px;" src="<%=cp%>/uploads/f_food/${dto.f_image}">
+						</td>
+					</tr>
+					<%-- <tr class="title">
 						<td class="name">설&nbsp;&nbsp;&nbsp;명</td>
 						<td class="write">
 							${dto.f_intro}
 						</td>
-					</tr>
-					<tr class="title">
-						<td class="name">이미지</td>
-						<td class="write">
-							<img src="<%=cp%>/food/foodmenu/${dto.f_image}">
-						</td>
-					</tr>
+					</tr> --%>
 				</table>
-				<table>
+				<table class="btn_box">
 					<tr>
-						<c:if test="${sessionScope.loginMem.loginId== 'admin'}">				    
-			          		<button type="button" onclick="updateFoodMenu('${dto.f_num}');">수정</button>
-			       		</c:if>
-			      		<c:if test="${sessionScope.loginMem.loginId== 'admin'}">				    
-			          		<button type="button" onclick="deleteFoodMenu('${dto.f_num}');">삭제</button>
-			       		</c:if>
-			
-				    	<td>
-			        		<button type="button" onclick="javascript:location.href='<%=cp%>/foodmenu/list.do?page=${page}';">리스트</button>
+						<td>
+							<c:if test="${sessionScope.loginMem.loginId== 'admin'}">				    
+				          		<button type="button" class="btn" onclick="updateFoodMenu('${dto.f_num}');">수정</button>			    
+				          		<button type="button" class="btn" onclick="deleteFoodMenu('${dto.f_num}');">삭제</button>
+				       		</c:if>
+			        		<button type="button" class="btn" onclick="javascript:location.href='<%=cp%>/foodmenu/list.do?page=${page}';">리스트</button>
 			    		</td>
 					</tr>
 				</table>

@@ -44,22 +44,28 @@ public class FoodMenuDAO {
 	}
 
 	// 전체 데이터 개수
-	public int dataCount() {
+	public int dataCount(String type) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql;
 
 		try {
-			sql = "SELECT NVL(COUNT(f_num), 0) cnt FROM foodmenu";
+			sql = "SELECT NVL(COUNT(f_num), 0) cnt FROM foodmenu WHERE f_type = ?";
 
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, type);
 
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
 				result = rs.getInt(1);
 			}
+			
+			/*
+			 * FoodMenuDTO dto = new FoodMenuDTO(); dto.setF_type(rs.getString("f_type"));
+			 */
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -124,8 +130,8 @@ public class FoodMenuDAO {
 		return result;
 	}
 
-	// 게시물 리스트(검색 전): main
-	public List<FoodMenuDTO> listMain(int offset, int rows, String type) {
+	// 게시물 리스트
+	public List<FoodMenuDTO> listMain(int offset, int rows, String f_type) {
 		List<FoodMenuDTO> list = new ArrayList<FoodMenuDTO>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -139,7 +145,7 @@ public class FoodMenuDAO {
 			sb.append(" OFFSET ? ROWS FETCH FIRST ? ROWS ONLY ");
 
 			pstmt = conn.prepareStatement(sb.toString());
-			pstmt.setString(1, type);
+			pstmt.setString(1, f_type);
 			pstmt.setInt(2, offset);
 			pstmt.setInt(3, rows);
 
@@ -177,7 +183,7 @@ public class FoodMenuDAO {
 		return list;
 	}
 
-	// 게시물 리스트(검색 후)
+	// 게시물 리스트
 	public List<FoodMenuDTO> listFoodMenu(int offset, int rows, String condition, String keyword) {
 		List<FoodMenuDTO> list = new ArrayList<FoodMenuDTO>();
 		PreparedStatement pstmt = null;
@@ -289,14 +295,14 @@ public class FoodMenuDAO {
 		StringBuilder sb = new StringBuilder();
 
 		try {
-			sb.append("UPDATE foodmenu SET f_name=?, f_price=?, f_intro=?, f_image=? ");
+			sb.append("UPDATE foodmenu SET f_name=?, f_price=?, f_image=?, f_intro=? ");
 			sb.append(" WHERE f_num=?");
 			pstmt = conn.prepareStatement(sb.toString());
 
 			pstmt.setString(1, dto.getF_name());
 			pstmt.setString(2, dto.getF_price());
-			pstmt.setString(3, dto.getF_intro());
-			pstmt.setString(4, dto.getF_image());
+			pstmt.setString(3, dto.getF_image());
+			pstmt.setString(4, dto.getF_intro());
 			pstmt.setInt(5, dto.getF_num());
 
 			result = pstmt.executeUpdate();
@@ -315,7 +321,8 @@ public class FoodMenuDAO {
 	}
 
 	// 게시물 삭제
-	public void deleteFoodMenu(int f_num, String loginId) {
+	public int deleteFoodMenu(int f_num) {
+		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql;
 
@@ -334,5 +341,6 @@ public class FoodMenuDAO {
 				}
 			}
 		}
+		return result;
 	}
 }

@@ -2,11 +2,11 @@
 
 .body_title {
 	float: left;
-	margin-top: 80px;
-	padding-bottom: 30px;
+	margin-top: 20px;
+	padding-bottom: 70px;
 }
 
-.container .body-container .body_title h2 {
+.container .body-container .body_title h3 {
 	color: white;
 	font-size: 22px;
 }
@@ -31,7 +31,7 @@
 }
 
 .name {
-	/* background: #d2d2d2; */
+	/* background: white; */
 	width: 150px;
 	padding: 5px;
 }
@@ -57,6 +57,11 @@
 	resize: none;	
 	width: 500px;
 	margin: 10px;
+}
+
+.image_delete {
+	background: lime;
+	color: white;
 }
 
 .btn_box {

@@ -2,8 +2,6 @@ package com.menu;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
@@ -35,22 +33,32 @@ public class FoodMenuServlet extends MyUploadServlet {
 		HttpSession session = req.getSession();
 
 		String root = session.getServletContext().getRealPath("/");
-		pathname = root + File.separator + "uploads" + File.separator + "food";
+		pathname = root + File.separator + "uploads" + File.separator + "f_food";
 
 		if (uri.indexOf("list.do") != -1) {
+			// 리스트
 			list(req, resp);
 		} else if (uri.indexOf("created.do") != -1) {
+			// 메뉴 폼
 			createdForm(req, resp);
 		} else if (uri.indexOf("created_ok.do") != -1) {
+			// 메뉴 등록
 			createdSubmit(req, resp);
 		} else if (uri.indexOf("article.do") != -1) {
+			// 메뉴 보기
 			article(req, resp);
 		} else if (uri.indexOf("update.do") != -1) {
+			// 메뉴 수정
 			updateForm(req, resp);
 		} else if (uri.indexOf("update_ok.do") != -1) {
+			// 메뉴 수정 완료
 			updateSubmit(req, resp);
 		} else if (uri.indexOf("delete.do") != -1) {
+			// 메뉴 삭제
 			delete(req, resp);
+		} else if (uri.indexOf("deleteFile.do") != -1) {
+			// 이미지 삭제
+			deleteFile(req, resp);
 		}
 	}
 
@@ -63,30 +71,33 @@ public class FoodMenuServlet extends MyUploadServlet {
 //		LoginSession ls = (LoginSession) session.getAttribute("loginMem");
 
 		String page = req.getParameter("page");
-		String type = req.getParameter("type");	
-		if(type == null) {
-			type = "main";
+		String f_type = req.getParameter("f_type");
+		if (f_type == null) {
+			f_type = "main";
 		}
-		
+
 		int current_page = 1;
 		if (page != null) {
 			current_page = Integer.parseInt(page);
 		}
 
-		int dataCount = dao.dataCount();
+		int dataCount = dao.dataCount(f_type);
 
-		int rows = 6;
+		int rows = 4;
 		int total_page = util.pageCount(rows, dataCount);
 		if (current_page > total_page) {
 			current_page = total_page;
 		}
 
 		int offset = (current_page - 1) * rows;
-		
-		List<FoodMenuDTO> list = dao.listMain(offset, rows, type);
+		if (offset < 0) {
+			offset = 0;
+		}
 
-		String listUrl = cp + "/foodmenu/list.do?type=" + type;
-		String articleUrl = cp + "/foodmenu/article.do?page=" + current_page + "&type="+type;
+		List<FoodMenuDTO> list = dao.listMain(offset, rows, f_type);
+
+		String listUrl = cp + "/foodmenu/list.do?f_type=" + f_type;
+		String articleUrl = cp + "/foodmenu/article.do?page=" + current_page + "&f_type=" + f_type;
 		String paging = util.paging(current_page, total_page, listUrl);
 
 //		req.setAttribute(이름, ls);
@@ -96,8 +107,8 @@ public class FoodMenuServlet extends MyUploadServlet {
 		req.setAttribute("page", current_page);
 		req.setAttribute("total_page", total_page);
 		req.setAttribute("paging", paging);
-		req.setAttribute("type", type);
-		
+		req.setAttribute("f_type", f_type);
+
 		forward(req, resp, "/WEB-INF/views/foodmenu/list.jsp");
 	}
 
@@ -128,17 +139,17 @@ public class FoodMenuServlet extends MyUploadServlet {
 		FoodMenuDAO dao = new FoodMenuDAO();
 		FoodMenuDTO dto = new FoodMenuDTO();
 
-		dto.setF_name(req.getParameter("name"));
-		dto.setF_price(req.getParameter("price"));
-		dto.setF_type(req.getParameter("type"));
-		dto.setF_intro(req.getParameter("intro"));
-		dto.setF_image(req.getParameter("image"));
+		dto.setF_name(req.getParameter("f_name"));
+		dto.setF_price(req.getParameter("f_price"));
+		dto.setF_type(req.getParameter("f_type"));
+		dto.setF_intro(req.getParameter("f_intro"));
+		dto.setF_image(req.getParameter("f_image"));
 
 		System.out.println(dto.getF_name() + ":" + dto.getF_price());
 
 		String fullpath = null;
 
-		Part p = req.getPart("food");
+		Part p = req.getPart("f_food");
 		Map<String, String> map = doFileUpload(p, pathname);
 		if (map != null) {
 			String f_image = map.get("saveFilename");
@@ -171,22 +182,21 @@ public class FoodMenuServlet extends MyUploadServlet {
 			resp.sendRedirect(cp + "/foodmenu/list.do?=page" + page);
 			return;
 		}
-		
+
 		dto.setF_intro(dto.getF_intro().replaceAll("\n", "<br>"));
-		
+
 		req.setAttribute("dto", dto);
 		req.setAttribute("page", page);
-		
 
 		forward(req, resp, "/WEB-INF/views/foodmenu/article.jsp");
 	}
 
 	private void updateForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String cp = req.getContextPath();
 		HttpSession session = req.getSession();
 		LoginSession ls = (LoginSession) session.getAttribute("loginMem");
 
 		FoodMenuDAO dao = new FoodMenuDAO();
-		String cp = req.getContextPath();
 
 		String page = req.getParameter("page");
 		int f_num = Integer.parseInt(req.getParameter("f_num"));
@@ -206,17 +216,16 @@ public class FoodMenuServlet extends MyUploadServlet {
 
 		req.setAttribute("dto", dto);
 		req.setAttribute("page", page);
-
 		req.setAttribute("mode", "update");
 
 		forward(req, resp, "/WEB-INF/views/foodmenu/created.jsp");
 	}
 
 	private void updateSubmit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		FoodMenuDAO dao = new FoodMenuDAO();
 		String cp = req.getContextPath();
-
+		FoodMenuDAO dao = new FoodMenuDAO();
 		FoodMenuDTO dto = new FoodMenuDTO();
+
 		int f_num = Integer.parseInt(req.getParameter("f_num"));
 		String page = req.getParameter("page");
 
@@ -224,20 +233,20 @@ public class FoodMenuServlet extends MyUploadServlet {
 		dto.setF_name(req.getParameter("f_name"));
 		dto.setF_price(req.getParameter("f_price"));
 		dto.setF_type(req.getParameter("f_type"));
-		dto.setF_intro(req.getParameter("f_intro"));
 		dto.setF_image(req.getParameter("f_image"));
+		dto.setF_intro(req.getParameter("f_intro"));
 
-		Part p = req.getPart("food");
+		Part p = req.getPart("f_food");
 		Map<String, String> map = doFileUpload(p, pathname);
 		if (map != null) {
 			// 기존파일 삭제
-			if (req.getParameter("f_image ").length() != 0) {
-				FileManager.doFiledelete(pathname, req.getParameter("f_image "));
+			if (req.getParameter("f_image").length() != 0) {
+				FileManager.doFiledelete(pathname, req.getParameter("f_image"));
 			}
 
 			// 새로운 파일
-			String f_image = map.get("saveFileName");
-			dto.setF_image(f_image);
+			String imageFileName = map.get("saveFilename");
+			dto.setF_image(imageFileName);
 		}
 
 		dao.updateFoodMenu(dto);
@@ -247,31 +256,65 @@ public class FoodMenuServlet extends MyUploadServlet {
 
 	private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String cp = req.getContextPath();
-		FoodMenuDAO dao = new FoodMenuDAO();
-
 		HttpSession session = req.getSession();
 		LoginSession ls = (LoginSession) session.getAttribute("loginMem");
+
+		FoodMenuDAO dao = new FoodMenuDAO();
 
 		String page = req.getParameter("page");
 		int f_num = Integer.parseInt(req.getParameter("f_num"));
 
-		String condition = req.getParameter("condition");
-		String keyword = req.getParameter("keyword");
-		if (condition == null) {
-			condition = "subject";
-			keyword = "";
+		FoodMenuDTO dto = dao.readFoodMenu(f_num);
+		if (dto == null) {
+			resp.sendRedirect(cp + "/foodmenu/list.do?page=" + page);
+			return;
 		}
 
-		keyword = URLDecoder.decode(keyword, "UTF-8");
-
-		String query = "page=" + page;
-		if (keyword.length() != 0) {
-			query += "&condition=" + condition + "&keyword=" + URLEncoder.encode(keyword, "UTF-8");
+		if (!ls.getLoginId().equals("admin")) {
+			resp.sendRedirect(cp + "/foodmenu/list.do?page=" + page);
+			return;
 		}
 
-		dao.deleteFoodMenu(f_num, ls.getLoginId());
+		FileManager.doFiledelete(pathname, dto.getF_image());
 
-		resp.sendRedirect(cp + "/foodmenu/list.do?page=" + query);
+		dao.deleteFoodMenu(f_num);
+
+		resp.sendRedirect(cp + "/foodmenu/list.do?" + page);
 	}
 
+	private void deleteFile(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		LoginSession ls = (LoginSession) session.getAttribute("loginMem");
+
+		String cp = req.getContextPath();
+		FoodMenuDAO dao = new FoodMenuDAO();
+
+		String page = req.getParameter("page");
+		int f_num = Integer.parseInt(req.getParameter("f_num"));
+
+		FoodMenuDTO dto = dao.readFoodMenu(f_num);
+		if (dto == null) {
+			resp.sendRedirect(cp + "/foodmenu/list.do?page=" + page);
+			return;
+		}
+
+		if (!ls.getLoginId().equals("admin")) {
+			resp.sendRedirect(cp + "/foodmenu/list.do?page=" + page);
+			return;
+		}
+
+		// 파일 삭제
+		FileManager.doFiledelete(pathname, dto.getF_image());
+
+		// 파일명과 파일 크기 변경
+		dto.setF_image("");
+		dao.updateFoodMenu(dto);
+
+		req.setAttribute("dto", dto);
+		req.setAttribute("page", page);
+
+		req.setAttribute("mode", "update");
+
+		forward(req, resp, "/WEB-INF/views/foodmenu/created.jsp");
+	}
 }
