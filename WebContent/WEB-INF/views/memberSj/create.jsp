@@ -18,134 +18,325 @@
 	type="text/css">
 <link rel="stylesheet" href="<%=cp%>/resource/css/board.css"
 	type="text/css">
-<script type="text/javascript"></script>
+<script type="text/javascript">
+
+
+function checkInfo() {
+	var f = document.memberForm;
+	
+	var val = f.memberId;
+	val = val.trim();
+	if(!val){
+		alert("아이디를 입력하세요.");
+		val.memberId.focus();
+		return;
+	}
+	
+	if(!/^[a-z][a-z0-9]$/i.test(val)){
+		alert("아이디 형식 오류입니다.");
+		val.memberId.focus();
+		return;
+	}
+	
+	val = f.memberPassword;
+	val = val.trim();
+	if(!val){
+		alert("패스워드를 입력하세요.");
+		val.memberPassword.focus();
+		return;
+	}
+	if(!/^(?=.*[a-z])(?=.*[!@#$%^&*()_+]|.*[0-9]).{5,10}$/i.test(val)){
+		alert("패스워드 형식 오류입니다.");
+		val.memberPassword.focus();
+		return;
+	}
+	
+	if(val != f.memberPasswordCh.value){
+		alert("패스워드가 일치하지 않습니다.");
+		f.memberPasswordCh.focus();
+		return;
+	}
+	
+	val = f.memberName;
+	val = val.trim();
+	if(!val){
+		alert("이름을 입력하세요.");
+		f.memberName.focus();
+		return;
+	}
+	
+	val = f.memberBirth.value;
+	val = val.trim();
+	if(!val){
+		alert("생년월일을 입력하세요.");
+		f.memberBirth.focus();
+		return;
+	}
+	
+	val = f.tel1.value;
+	val = val.trim();
+	if(!val){
+		alert("전화번호를 입력하세요.");
+		f.tel1.focus();
+		return;
+	}
+	
+	
+	val = f.tel2.value;
+	val = val.trim();
+	if(!val){
+		alert("전화번호를 입력하세요.");
+		f.tel2.focus();
+		return;
+	}
+	if(!/^(\d+)$/.test(val)){
+		alert("숫자만 가능합니다.");
+		f.tel2.focus();
+		return;
+	}
+	
+	val = f.tel3.value;
+	val = val.trim();
+	if(!val){
+		alert("전화번호를 입력하세요.");
+		f.tel3.focus();
+		return;
+	}
+	if(!/^(\d+)$/.test(val)){
+		alert("숫자만 가능합니다.");
+		f.tel3.focus();
+		return;
+	}
+	
+	
+	val = f.email1.value;
+	val = val.trim();
+	if(!val){
+		alert("이메일을 입력하세요.");
+		f.email1.focus();
+		return;
+	}
+	val = f.email2.value;
+	val = val.trim();
+	if(!val){
+		alert("이메일을 입력하세요.");
+		f.email2.focus();
+		return;
+	}
+	
+	var mode = "${mode}";
+	if(mode=="created"){
+		f.action="<%=cp%>/memberSj/insertSubmit.mem";
+	}else if(mode=="update"){
+		f.action="<%=cp%>/memberSj/updateSubmit.mem";
+	}
+	
+	f.submit()
+}
+function chooseEmail() {
+	var f = document.memberForm;
+	
+	var str = f.selectEmail.value
+	
+	if(str != 'direct'){
+		f.email2.value = str;
+		f.email2.readOnly = true;
+		f.email1.focus();
+	}
+	else{
+		f.email2.value="";
+		f.email2.readOnly=false;
+		f.email1.focus();
+	}
+}
+
+</script>
+<style type="text/css">
+td{
+	padding-bottom: 20px;
+}
+
+.boxTF{
+	
+}
+</style>
 </head>
 <body>
-
 	<div class="header">
 		<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 	</div>
 
 	<div class="info-title">| 모드를 넣자</div>
-
+<div>
 	<form name="memberForm" method="post">
-		<table>
+		<table style="border-top : 1px solid white; margin: 30px auto; width: 810px; padding-top:40px;">
 			<tr>
-				<td>아이디</td>
-				<td><input type="text" name="memberId" id="memberId"
-					value="${dto값을 넣자}" ${모드를 넣자}> <span>아이디는 5~10자
-						이내이며, 첫 글자는 영문자로 시작해야 합니다.</span></td>
-			</tr>
-			<tr>
-				<td>패스워드</td>
-				<td><input type="password" name="memberPassword"
-					id="memberPassword" value="${dto값을 넣자}" ${모드를 넣자}> <span>아이디는
+				<td width="100" valign="top"
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">아이디</td>
+				<td width="250" valign="top"
+					style="text-align: left; padding-top: 5px;"><input
+					type="text" name="memberId" id="memberId" value=""> <span style="color: white; font-weight: bold;">&nbsp;&nbsp;아이디는
 						5~10자 이내이며, 첫 글자는 영문자로 시작해야 합니다.</span></td>
 			</tr>
 			<tr>
-				<td>패스워드 확인</td>
-				<td><input type="password" name="memberPasswordCh"
-					id="memberPasswordCh" value="${dto값을 넣자}" ${모드를 넣자}> <span>패스워드를
-						한번 더 입력해주세요.</span></td>
+				<td width="100" valign="top"
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">패스워드</td>
+				<td width="250" valign="top"
+					style="text-align: left; padding-top: 5px;"><input
+					type="password" name="memberPassword" id="memberPassword" value="">
+					<span style="color: white; font-weight: bold;">&nbsp;&nbsp;패스워드를 입력해주세요.</span></td>
 			</tr>
 			<tr>
-				<td>이름</td>
-				<td><input type="text" name="memberName" id="memberName"
-					value="${dto값을 넣자}" ${모드를 넣자}> <span>예) 정우진</span></td>
+				<td width="100" valign="top"
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">패스워드 확인</td>
+				<td width="100" valign="top"
+					style="text-align: left; padding-top: 5px;"><input
+					type="password" name="memberPasswordCh" id="memberPasswordCh"
+					value=""> 	<span style="color: white; font-weight: bold;">&nbsp;&nbsp;패스워드를 한번 더 입력해주세요.</span></td>
 			</tr>
 			<tr>
-				<td>생년월일</td>
-				<td><input type="text" name="memberBirth" id="memberBirth"
-					value="${dto값을 넣자}" ${모드를 넣자}> <span>생년월일은
-						2000-01-01 형식으로 입력하세요.</span></td>
+				<td width="100" valign="top"
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">이름</td>
+				<td width="100" valign="top"
+					style="text-align: left; padding-top: 5px;"><input
+					type="text" name="memberName" id="memberName" value=""> 	<span style="color: white; font-weight: bold;">&nbsp;&nbsp;예)
+						정우진</span></td>
 			</tr>
 			<tr>
-				<td>이메일</td>
-				<td><select>
+				<td width="100" valign="top"
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">생년월일</td>
+				<td style="text-align: left;"><input type="text" name="memberBirth" id="memberBirth"
+					value=""> 	<span style="color: white; font-weight: bold;">&nbsp;&nbsp;생년월일은 2000-01-01 형식으로 입력하세요.</span></td>
+			</tr>
+			<tr>
+				<td width="100" valign="top"
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">이메일</td>
+				<td width="100" valign="top"
+					style="text-align: left; padding-top: 5px;">
+					<select onchange="chooseEmail();"name="selectEmail">
 						<option value="">선택</option>
-						<option value="naver.com"
-							${dto.email2 == "naver.com" ? "selected='selected='":""}>네이버</option>
-						<option value="gmail.com"
-							${dto.email2 == "gmail.com" ? "selected='selected='":""}>구글</option>
-						<option value="daum.net"
-							${dto.email2 == "daum.net" ? "selected='selected='":""}>다음</option>
-						<option value="hanmail.com"
-							${dto.email2 == "hanmail.com" ? "selected='selected='":""}>한메일</option>
+						<option value="naver.com" ${dto.email2 == "naver.com" ? "selected='selected='":""}>네이버</option>
+						<option value="gmail.com" ${dto.email2 == "gmail.com" ? "selected='selected='":""}>구글</option>
+						<option value="daum.net" ${dto.email2 == "daum.net" ? "selected='selected='":""}>다음</option>
+						<option value="hanmail.com" ${dto.email2 == "hanmail.com" ? "selected='selected='":""}>한메일</option>
 						<option value="direct">직접입력</option>
-				</select></td>
+				</select> <input type="text" name="email1" value="" size="13" maxlength="30"
+					class="boxTF"> <span style="color: white;font-weight: bold;">@</span> <input type="text" name="email2" value=""
+					size="13" maxlength="30" class="boxTF" readonly="readonly">
+				</td>
 			</tr>
 			<tr>
-				<td>전화번호</td>
-				<td>
-				<select>
+				<td width="100" valign="top"
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">전화번호</td>
+				<td width="100" valign="top"
+					style="text-align: left; padding-top: 5px;">
+					<select name="tel1">
 						<option value="">선택</option>
-						<option value="010"
-							${dto.tel1 == "naver.com" ? "selected='selected='":""}>010</option>
-						<option value="011"
-							${dto.tel1 == "naver.com" ? "selected='selected='":""}>011</option>
-						<option value="016"
-							${dto.tel1 == "naver.com" ? "selected='selected='":""}>016</option>
-						<option value="017"
-							${dto.tel1 == "naver.com" ? "selected='selected='":""}>017</option>
-						<option value="018"
-							${dto.tel1 == "naver.com" ? "selected='selected='":""}>018</option>
-						<option value="019"
-							${dto.tel1 == "naver.com" ? "selected='selected='":""}>019</option>
-				</select>
-				 - <input type="text" name="tel2" value="${dto.tel2}" class="boxTF" maxlength="4">
-				 - <input type="text" name="tel3" value="${dto.tel3}" class="boxTF" maxlength="4">
-				 </td>
+						<option value="010"${dto.tel1 == "naver.com" ? "selected='selected='":""}>010</option>
+						<option value="011" ${dto.tel1 == "naver.com" ? "selected='selected='":""}>011</option>
+						<option value="016" ${dto.tel1 == "naver.com" ? "selected='selected='":""}>016</option>
+						<option value="017" ${dto.tel1 == "naver.com" ? "selected='selected='":""}>017</option>
+						<option value="018" ${dto.tel1 == "naver.com" ? "selected='selected='":""}>018</option>
+						<option value="019" ${dto.tel1 == "naver.com" ? "selected='selected='":""}>019</option>
+				</select><span style="color: white;font-weight: bold;">&nbsp;-&nbsp;</span><input type="text" name="tel2" value="" class="boxTF"
+					maxlength="4"> <span style="color: white;font-weight: bold;">&nbsp;-&nbsp;</span> <input type="text" name="tel3" value=""
+					class="boxTF" maxlength="4"></td>
 			</tr>
-			
-			<tr>
-				<td>우편번호</td>
-				<td><input type="text" name="memberId" id="memberId"
-					value="${dto값을 넣자}" ${모드를 넣자}> <span>아이디는 5~10자
-						이내이며, 첫 글자는 영문자로 시작해야 합니다.</span></td>
-			</tr>
-			<tr>
-				<td>아이디</td>
-				<td><input type="text" name="memberId" id="memberId"
-					value="${dto값을 넣자}" ${모드를 넣자}> <span>아이디는 5~10자
-						이내이며, 첫 글자는 영문자로 시작해야 합니다.</span></td>
-			</tr>
-			<tr>
-			      <td width="100" valign="top" style="text-align: right; padding-top: 5px;">
-			            <label style="font-weight: 900;">우편번호</label>
-			      </td>
-			      <td style="padding: 0 0 15px 15px;">
-			        <p style="margin-top: 1px; margin-bottom: 5px;">
-			            <input type="text" name="zip" id="zip" value="${dto.zip}"
-			                       class="boxTF" readonly="readonly">
-			            <button type="button" class="btn" onclick="daumPostcode();">우편번호</button>          
-			        </p>
-			      </td>
-			  </tr>
-			  
-			  <tr>
-			      <td width="100" valign="top" style="text-align: right; padding-top: 5px;">
-			            <label style="font-weight: 900;">주소</label>
-			      </td>
-			      <td style="padding: 0 0 15px 15px;">
-			        <p style="margin-top: 1px; margin-bottom: 5px;">
-			            <input type="text" name="addr1" id="addr1" value="${dto.addr1}" maxlength="50" 
-			                       class="boxTF" style="width: 95%;" placeholder="기본 주소" readonly="readonly">
-			        </p>
-			        <p style="margin-bottom: 5px;">
-			            <input type="text" name="addr2" id="addr2" value="${dto.addr2}" maxlength="50" 
-			                       class="boxTF" style="width: 95%;" placeholder="나머지 주소">
-			        </p>
-			      </td>
-			  </tr>
 
+			<tr>
+				<td width="100" valign="top"
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">
+					<label
+					style="font-weight: 900;">우편번호</label></td>
+				<td style="padding: 0 0 15px 0px; text-align: left;">
+					<p style="margin-top: 1px; margin-bottom: 5px;">
+						<input type="text" name="zip" id="zip" value="" class="boxTF"
+							readonly="readonly">
+						<button type="button" class="btn" onclick="daumPostcode();">우편번호</button>
+					</p>
+				</td>
+			</tr>
+
+			<tr>
+				<td width="100" valign="top"
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;"><label
+					style="font-weight: 900;">주소</label></td>
+				<td style="padding: 0 0 15px 0px;">
+					<p style="margin-top: 1px; margin-bottom: 5px;">
+						<input type="text" name="addr1" id="addr1" value="" maxlength="50"
+							class="boxTF" style="width: 95%;" placeholder="기본 주소"
+							readonly="readonly">
+					</p>
+					<p style="margin-bottom: 5px;">
+						<input type="text" name="addr2" id="addr2" value="" maxlength="50"
+							class="boxTF" style="width: 95%;" placeholder="나머지 주소">
+					</p>
+				</td>
+			</tr>
+		</table>
+		
+		<table style="margin: 30px auto;">
+			<tr>
+				<td style="text-align: center;">
+					<button type="button" name="sendInfo" onclick="checkInfo();" style=" padding:6px; height:45px; border-radius: 5px; border: none;
+					">가입하기</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="reset" style=" padding:6px; height:45px;border-radius: 5px; border: none;">다시입력</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" onclick="javascript:location.href='<%=cp%>/';"  style=" padding:6px; height:45px;border-radius: 5px; border: none;"
+					>뒤로가기</button>
+				</td>
+			</tr>
 		</table>
 	</form>
-
+</div>
 
 	<div class="footer">
 		<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 	</div>
 
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+    function daumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var fullAddr = ''; // 최종 주소 변수
+                var extraAddr = ''; // 조합형 주소 변수
+
+                // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    fullAddr = data.roadAddress;
+
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    fullAddr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
+                if(data.userSelectedType === 'R'){
+                    //법정동명이 있을 경우 추가한다.
+                    if(data.bname !== ''){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있을 경우 추가한다.
+                    if(data.buildingName !== ''){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
+                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('zip').value = data.zonecode; //5자리 새우편번호 사용
+                document.getElementById('addr1').value = fullAddr;
+
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById('addr2').focus();
+            }
+        }).open();
+    }
+</script>   
 
 </body>
 </html>
