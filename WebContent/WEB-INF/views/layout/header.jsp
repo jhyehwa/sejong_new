@@ -56,9 +56,9 @@
             <a href="#">Information</a>
             <ul class="menu_sub">
                 <li><a href="<%=cp %>/notice/list.do">Notice/Event</a></li>
-                <li><a href="#">QnA</a></li>
-                <li><a href="<%=cp%>/board/list.board">FreeBoard</a></li>
-                <li><a href="#">Directions</a></li>      
+                <li><a href="<%=cp %>/qna/list.do">QnA</a></li>
+                <li><a href="<%=cp %>/board/list.do">FreeBoard</a></li>
+                <li><a href="<%=cp %>/map/showmap.do">Directions</a></li>      
             </ul>
         </li>   
 

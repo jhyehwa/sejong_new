@@ -10,6 +10,13 @@
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 <body>
+<div class="header">
+	<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
+</div>
 
+
+<div class="footer">
+	<jsp:include page="/WEB-INF/views/layout/footer.jsp" />
+</div>
 </body>
 </html>
