@@ -106,9 +106,10 @@
 	<div class="text-sub1">
 		<p class="hold-menu">Menu</p>
 		<ul class="sub-menu">
-			<li><a href="information_event.html"><span
-					style="color: #B2FA5C;">Notice/Event</span></a></li>
-			<li><a href="<%=cp%>/board/list.board">FreeBoard</a></li>
+				<li><a href="<%=cp %>/notice/list.do">Notice/Event</a></li>
+			<li><a href="<%=cp%>/qna/list.do">QNA</a></li>
+			<li><a href="<%=cp%>/board/list.board"><span
+					style="color: #B2FA5C;">FreeBoard</span></a></li>
 			<li><a href="information_directions.html">Directions</a></li>
 		</ul>
 	</div>
