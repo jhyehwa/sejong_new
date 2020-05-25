@@ -154,6 +154,8 @@ function checkDate() {
 	
 <div class="container">
     <div class="body-container">   
+    
+    <jsp:include page="/WEB-INF/views/layout/sns.jsp"></jsp:include>
    
    <div class="reserve">   	
 		<h3>| 세종 스테이크 예약 </h3>	

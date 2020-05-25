@@ -108,6 +108,8 @@ function deleteReserve(num) {
 <div class="container">
     <div class="body-container">   
    
+   <jsp:include page="/WEB-INF/views/layout/sns.jsp"></jsp:include>
+   
    <div class="reserve">   
 		<h3>| 예약 확인 </h3>			
 		

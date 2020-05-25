@@ -134,7 +134,9 @@ function updateOk() {
 <div class="container">
     <div class="body-container">   
    
-   <div class="reserve">
+   <jsp:include page="/WEB-INF/views/layout/sns.jsp"></jsp:include>
+   
+   <div class="reserve">   
    
 		<h3>| 세종 스테이크 예약 </h3>			
 		<div class="title">		

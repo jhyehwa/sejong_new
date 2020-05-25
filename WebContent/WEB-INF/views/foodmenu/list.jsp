@@ -25,6 +25,8 @@
 	<div class="header">
 		<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 	</div>
+	
+	<jsp:include page="/WEB-INF/views/layout/sns.jsp"></jsp:include>
 
 	<div class="text-sub1">
 		<p class="hold-menu">Menu</p>

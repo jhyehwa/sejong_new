@@ -46,6 +46,9 @@ function searchList() {
 	</div>
 
 	<div class="text-sub1">
+	
+	<jsp:include page="/WEB-INF/views/layout/sns.jsp"></jsp:include>
+	
 		<p class="hold-menu">Reservation</p>
 		<ul class="sub-menu">
 			<li><a href="<%=cp%>/reserve/reserve.do"><span>Reserve</span></a></li>
