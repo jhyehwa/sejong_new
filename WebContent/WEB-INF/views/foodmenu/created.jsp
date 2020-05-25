@@ -74,8 +74,8 @@
 	</div>
 	<div class="container">
 		<div class="body-container">
-			<div class="body_title">
-				<h3>| Registration</h3>
+			<div>
+				<h2>| Registration</h2>
 			</div>
 			
 			<div class="menu_">
@@ -108,7 +108,7 @@
 						<tr class="title">
 							<td class="name">설&nbsp;&nbsp;&nbsp;명</td>
 							<td class="write">
-								<textarea rows="12" name="f_intro">${dto.f_intro}</textarea>
+								<textarea rows="15" name="f_intro">${dto.f_intro}</textarea>
 							</td>
 						</tr>
 						<tr class="title">

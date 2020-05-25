@@ -6,25 +6,33 @@ h2 {
 	text-align: left;
 	font-size: 22px;
 	color: white;
-	background: fuchsia;
+	/* background: fuchsia; */
+}
+
+.menu_logo {
+	width: 30px;
+	height: 30px;
 }
 
 .menu_ {
-	/* width: 960px; */
+	display: block;
+	/* background: orange; */
 }
 
 .image_box {
-	background: aqua;
+	padding-top: 10px;
+	/* background: aqua; */
 }
 
 .image_list {
 	margin: 0 auto;
-	width: 400px;
+	width: 475px;
 	height: 250px;
 	margin-top: 10px;
-	background: yellow;
+	/* border: 1px solid white; */
+	/* background: yellow; */
 }
-/* 
+
 .image {
 	width: 400px;
 	height: 250px;
@@ -36,31 +44,45 @@ h2 {
 	height: 30px;
 	font-size: 20px;
 	font-weight: bold;
-	color: white;
 	margin-bottom: 10px;
-	background: lime;
-} */
+	border: 1px solid #E6FFE6;
+	background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
 
 .name:hover {
 	cursor: pointer;
 }
 
 .num_page {
-	background: aqua;
 	margin: 0 auto;
+	/* background: aqua; */
 }
 
-.num {
-	background: green;
+.page_num {
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
+	/* background: blue; */
 }
 
 .photo {
-	margin-left: auto;
+	float: right;
 	margin-bottom: 10px;
+	margin-right: 40px;
+	
 }
 
 .photo_btn {
 	width: 100px;
-	height: 25px;
+	height: 35px;
 	font-size: 15px;
+	color:#333333;
+    font-weight:500;
+    font-family:"Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
+    border:1px solid #cccccc;
+    background-color:#fff;
+    text-align:center;
+    cursor:pointer;
+    padding:3px 10px 5px;
+    border-radius:4px;
 }

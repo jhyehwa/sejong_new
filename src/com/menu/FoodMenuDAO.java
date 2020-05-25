@@ -295,15 +295,16 @@ public class FoodMenuDAO {
 		StringBuilder sb = new StringBuilder();
 
 		try {
-			sb.append("UPDATE foodmenu SET f_name=?, f_price=?, f_image=?, f_intro=? ");
+			sb.append("UPDATE foodmenu SET f_name=?, f_price=?, f_type=?, f_image=?, f_intro=? ");
 			sb.append(" WHERE f_num=?");
 			pstmt = conn.prepareStatement(sb.toString());
 
 			pstmt.setString(1, dto.getF_name());
 			pstmt.setString(2, dto.getF_price());
-			pstmt.setString(3, dto.getF_image());
-			pstmt.setString(4, dto.getF_intro());
-			pstmt.setInt(5, dto.getF_num());
+			pstmt.setString(3, dto.getF_type());
+			pstmt.setString(4, dto.getF_image());
+			pstmt.setString(5, dto.getF_intro());
+			pstmt.setInt(6, dto.getF_num());
 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {

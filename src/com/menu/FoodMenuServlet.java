@@ -71,14 +71,14 @@ public class FoodMenuServlet extends MyUploadServlet {
 //		LoginSession ls = (LoginSession) session.getAttribute("loginMem");
 
 		String page = req.getParameter("page");
-		String f_type = req.getParameter("f_type");
-		if (f_type == null) {
-			f_type = "main";
-		}
-
 		int current_page = 1;
 		if (page != null) {
 			current_page = Integer.parseInt(page);
+		}
+		
+		String f_type = req.getParameter("f_type");
+		if (f_type == null) {
+			f_type = "main";
 		}
 
 		int dataCount = dao.dataCount(f_type);
@@ -97,7 +97,7 @@ public class FoodMenuServlet extends MyUploadServlet {
 		List<FoodMenuDTO> list = dao.listMain(offset, rows, f_type);
 
 		String listUrl = cp + "/foodmenu/list.do?f_type=" + f_type;
-		String articleUrl = cp + "/foodmenu/article.do?page=" + current_page + "&f_type=" + f_type;
+		String articleUrl = cp + "/foodmenu/article.do?f_type=" + f_type + "&page=" + current_page;
 		String paging = util.paging(current_page, total_page, listUrl);
 
 //		req.setAttribute(이름, ls);
@@ -175,11 +175,21 @@ public class FoodMenuServlet extends MyUploadServlet {
 
 		int f_num = Integer.parseInt(req.getParameter("f_num"));
 		String page = req.getParameter("page");
+		String f_type = req.getParameter("f_type");
+		
+		String query = "page=" + page;
+		if(f_type == null) {
+			f_type = "";
+		}
+		
+		if(f_type.length() != 0) {
+			query += "&f_type=" + f_type;
+		}
 
 		// 게시물 가져오기
 		FoodMenuDTO dto = dao.readFoodMenu(f_num);
 		if (dto == null) {
-			resp.sendRedirect(cp + "/foodmenu/list.do?=page" + page);
+			resp.sendRedirect(cp + "/foodmenu/list.do?=page" + query);
 			return;
 		}
 
@@ -187,6 +197,7 @@ public class FoodMenuServlet extends MyUploadServlet {
 
 		req.setAttribute("dto", dto);
 		req.setAttribute("page", page);
+		req.setAttribute("query", query);
 
 		forward(req, resp, "/WEB-INF/views/foodmenu/article.jsp");
 	}
@@ -232,9 +243,9 @@ public class FoodMenuServlet extends MyUploadServlet {
 		dto.setF_num(f_num);
 		dto.setF_name(req.getParameter("f_name"));
 		dto.setF_price(req.getParameter("f_price"));
-		dto.setF_type(req.getParameter("f_type"));
-		dto.setF_image(req.getParameter("f_image"));
+		dto.setF_type(req.getParameter("f_type")); 
 		dto.setF_intro(req.getParameter("f_intro"));
+		dto.setF_image(req.getParameter("f_image"));
 
 		Part p = req.getPart("f_food");
 		Map<String, String> map = doFileUpload(p, pathname);

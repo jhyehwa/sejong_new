@@ -1,66 +1,72 @@
 @charset "UTF-8";
 
-.body_title {
-	float: left;
-	margin-top: 20px;
-}
-
-.container .body-container .body_title h2 {
-	color: white;
+h2 {
+	padding-top: 20px;
+	width: 960px;
+	text-align: left;
 	font-size: 22px;
+	color: white;
+	/* background: fuchsia; */
 }
 
 .menu_ {
 	font-size: 18px;
 	font-family:"Malgun Gothic", "맑은 고딕", NanumGothic, 나눔고딕, 돋움, sans-serif;
-	background: red;
-	height: 500px;
+	/* background: red; */
 }
 
 .menu_list {
-	width: 420px;
-	border-spacing: 0;
-	border-collapse: collapse;
+	width: 860px;
+	margin-top: 40px;
 	margin-left: 50px;
-	background: aqua;
+	border: 1px solid white;
+	border-collapse: collapse;
+	border-spacing: 0;
+	/* background: aqua; */
 }
 
-.title {
-	border-top: 1px solid white;
-	border-bottom: 1px solid white;
-	height: 45px;
-}
-
-/* .name {
-	background: #d2d2d2;
-	width: 150px;
+.write_image {
+	width: 400px;
+	height: 400px;
 	padding: 5px;
-} */
+}
+
+.write_image>img {
+	width: 400px;
+	height: 400px;
+	/* background: yellow; */
+}
+
+.name {
+	width: 100px;
+	height: 50px;
+	padding: 5px;
+	font-weight: bold;
+	border-bottom: 1px solid white;
+	margin-left: 10px;
+	color: #828282;
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+
+.name_ {
+	height: 200px;
+	font-weight: bold;
+	border-bottom: 1px solid white;
+	color: #828282;
+	background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
 
 .write {
 	text-align: left;
-	background: yellow;
-}
-
-.write img {
-	margin-left: 10px;
-}
-
-.write input {
-	margin-left: 10px;
-	width: 250px;
-	height: 25px;
-}
-
-.write select {
-	margin-left: 10px;
-	width: 250px;
-	height: 25px;
+	color: white;
+	padding: 10px;
+	border-bottom: 1px solid white;
 }
 
 .btn_box {
-	margin: 0 auto;
-	margin-top: 25px;
+	margin-top: 30px;
+	float: right;
+	margin-right: 50px; 
 }
 
 .btn {

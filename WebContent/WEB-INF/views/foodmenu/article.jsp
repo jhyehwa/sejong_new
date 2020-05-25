@@ -42,50 +42,41 @@
 	
 	<div class="container">
 		<div class="body-container">
-			<div class="body_title">
+			<div>
 				<h2>| Main</h2>
 			</div>
 			
 			<div class="menu_">
 				<table class="menu_list">
 					<tr class="title">
-						<td class="write">
+						<td class="write_image" rowspan="3">
 							<img src="<%=cp%>/uploads/f_food/${dto.f_image}">
 						</td>
+						<td class="name">메&nbsp;&nbsp;&nbsp;뉴</td>
+						<td class="write">${dto.f_name}</td>
+					</tr>
+					<tr class="title">
+						<td class="name">가&nbsp;&nbsp;&nbsp;격</td>
+						<td class="write">${dto.f_price}</td>
+					</tr>
+					<tr class="title">
+						<td class="name_">설&nbsp;&nbsp;&nbsp;명</td>
+						<td class="write">${dto.f_intro}</td>
 					</tr>
 				</table>
 			</div>
 			
-			<div>
-				<table class="1">
-					<tr class="title">
-						<td class="name">메&nbsp;&nbsp;&nbsp;뉴</td>
-						<td class="write">${dto.f_name}</td>
-					</tr>
-					<%-- <tr class="title">
-						<td class="name">가&nbsp;&nbsp;&nbsp;격</td>
-						<td class="write">${dto.f_price}</td>
-					</tr> --%>
-					
-					<%-- <tr class="title">
-						<td class="name">설&nbsp;&nbsp;&nbsp;명</td>
-						<td class="write">
-							${dto.f_intro}
-						</td>
-					</tr> --%>
-				</table>
-				<table class="btn_box">
-					<tr>
-						<td>
-							<c:if test="${sessionScope.loginMem.loginId== 'admin'}">				    
-				          		<button type="button" class="btn" onclick="updateFoodMenu('${dto.f_num}');">수정</button>			    
-				          		<button type="button" class="btn" onclick="deleteFoodMenu('${dto.f_num}');">삭제</button>
-				       		</c:if>
-			        		<button type="button" class="btn" onclick="javascript:location.href='<%=cp%>/foodmenu/list.do?page=${page}';">리스트</button>
-			    		</td>
-					</tr>
-				</table>
-			</div>
+			<table class="btn_box">
+				<tr>
+					<td>
+						<c:if test="${sessionScope.loginMem.loginId== 'admin'}">				    
+			          		<button type="button" class="btn" onclick="updateFoodMenu('${dto.f_num}');">수정</button>			    
+			          		<button type="button" class="btn" onclick="deleteFoodMenu('${dto.f_num}');">삭제</button>
+			       		</c:if>
+		        		<button type="button" class="btn" onclick="javascript:location.href='<%=cp%>/foodmenu/list.do?${query}';">리스트</button>
+		    		</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	<div class="footer">

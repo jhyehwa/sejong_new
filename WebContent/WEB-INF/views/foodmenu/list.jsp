@@ -33,7 +33,7 @@
 	<div class="container">
 		<div class="body-container">
 			<div>
-				<h2>| Main </h2>
+				<h2><img class="menu_logo" src="/sejong_new/resource/image/menu.png"> Menu</h2>
 			</div>
 			
 			<table class="menu_">
@@ -44,7 +44,7 @@
 					<c:if test="${status.index != 0 && status.index % 2 == 0}">
 						<c:out value="</tr><tr>" escapeXml="false"/>
 					</c:if>
-					<td class="image_box" style="width: 300px;">
+					<td class="image_box">
 						<div class="image_list">
 							<img class="image" src="<%=cp%>/uploads/f_food/${dto.f_image}">
 						</div>
@@ -69,7 +69,7 @@
 			</table>
 			<table class="num_page">
 				<tr>
-					<td>
+					<td class="page_num">
 						${dataCount == 0 ? "등록된 게시물이 없습니다." : paging}
 					</td>
 				</tr>
