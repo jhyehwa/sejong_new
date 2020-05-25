@@ -25,16 +25,16 @@
             </c:if> 
          </div>   
 	   <div class="logo-main">
-         <a href="#"><img class="logo" src="/sejong_new/resource/image/logo.png"></a>
+         <a href="<%=cp %>/main.do"><img class="logo" src="/sejong_new/resource/image/logo.png"></a>
       </div>            
     </div>
  </div>
 
 <div class="menu">
     <ul>
-        <li class="menu_li"> <a href="#">Brand Story</a> </li>        			
+        <li class="menu_li"> <a href="<%=cp%>/brandstory/brandstory.do">Brand Story</a> </li>        			
         <li class="menu_li">
-            <a href="#">Menu</a>
+            <a href="<%=cp%>/foodmenu/list.do?f_type=main">Menu</a>
             <ul class="menu_sub">
                 <li value="main"><a href="<%=cp%>/foodmenu/list.do?f_type=main">Main</a></li>
                 <li value="side"><a href="<%=cp%>/foodmenu/list.do?f_type=side">Side</a></li>
@@ -55,7 +55,7 @@
         </li>
 
         <li class="menu_li">
-            <a href="#">Information</a>
+            <a href="<%=cp %>/notice/list.do">Information</a>
             <ul class="menu_sub">
                 <li><a href="<%=cp %>/notice/list.do">Notice/Event</a></li>
                 <li><a href="<%=cp %>/qna/list.do">QnA</a></li>

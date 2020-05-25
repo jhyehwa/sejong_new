@@ -29,7 +29,9 @@
 <div class="container">
     <div class="body-container">   
 		<div>
-			<img class="bimg" src="resource/image/steak.png">
+			<a href="<%=cp%>/foodmenu/list.do?f_type=main">
+			<img class="bimg" src="resource/image/steak.png"></a>
+      		<img class="banner" src="resource/image/banner.png">
 		</div>
 		
  	    <jsp:include page="/WEB-INF/views/layout/sns.jsp"></jsp:include>		

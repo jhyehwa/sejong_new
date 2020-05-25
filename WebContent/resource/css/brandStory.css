@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+.text-sub1 {
+	position: fixed;
+	left: 220px;
+	top: 170px;
+	width: 180px;
+	height: 250px;
+	clear: both;
+}
+
+h2 {
+	width: 193px; 
+	color: white;
+	text-align: left;	
+	font-size: 25px;	
+	padding: 5px;	
+	padding-top: 20px;
+}
+
+
+.hold-menu {
+	width: 180px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 15px 3px 15px 3px;
+	background: #4B4B4B;
+}
+
+.sub-menu li {
+	width: 180px;
+	height: 50px;
+	line-height: 50px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.sub-menu li a {
+	color: white;
+	padding: 6px 40px;
+}
+
+.sub-menu li:hover {
+	background: #575757;
+	border-radius: 15px 3px 15px 3px;
+}
+
+.sub-menu li a:hover {
+	background: #575757;
+	opacity: 0.8;
+}
+
+.brimg {
+	margin: 0px auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	width: 700px;
+	
+}

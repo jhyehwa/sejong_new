@@ -26,6 +26,14 @@
 	border: 7px solid #333333;
 }
 
+.banner {
+   /* margin-top: 5px; */
+   margin-bottom: 15px;
+   width: 900px;
+   height: 300px;
+   border: 7px solid #333333;
+}
+
 .text-sub {
 	position: fixed;
 	right: 350px;
