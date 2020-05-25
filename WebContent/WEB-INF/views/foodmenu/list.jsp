@@ -19,10 +19,6 @@
 		var url = "${articleUrl}&f_num=" + f_num;
 		location.href = url;
 	}
-	
-	$(function(){
-		$(".image").css("cursor", "pointer");
-	});
 </script>
 </head>
 <body>
@@ -30,6 +26,15 @@
 		<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 	</div>
 
+	<div class="text-sub1">
+		<p class="hold-menu">Menu</p>
+			<ul class="sub-menu">
+				<li value="main" ><a href="<%=cp%>/foodmenu/list.do?f_type=main"<c:if test="${f_type == 'main'}">style="color: #B2FA5C;"</c:if>>Main</a></li>
+                <li value="side"><a href="<%=cp%>/foodmenu/list.do?f_type=side"<c:if test="${f_type == 'side'}">style="color: #B2FA5C;"</c:if>>Side</a></li>
+                <li value="desserts"><a href="<%=cp%>/foodmenu/list.do?f_type=desserts"<c:if test="${f_type == 'desserts'}">style="color: #B2FA5C;"</c:if>>Desserts</a></li>
+                <li value="others"><a href="<%=cp%>/foodmenu/list.do?f_type=others"<c:if test="${f_type == 'others'}">style="color: #B2FA5C;"</c:if>>Others</a></li>
+			</ul>
+	</div>
 	<div class="container">
 		<div class="body-container">
 			<div>
