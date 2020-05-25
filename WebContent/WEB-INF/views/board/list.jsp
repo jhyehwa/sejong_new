@@ -14,6 +14,8 @@
 <title>Insert title here</title>
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <jsp:include page="/WEB-INF/views/layout/sns.jsp"></jsp:include>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 <script type="text/javascript">
 	function boardSearch() {
 		var f = document.boardSearch;
@@ -24,6 +26,14 @@
 
 		f.submit();
 	}
+	
+	
+	$(function() {
+		$(".write-board").hover(function() {
+			$(this).css("text-decoration","none");
+		});
+	});
+	
 </script>
 </head>
 <body>
@@ -32,16 +42,8 @@
 		<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 	</div>
 
-	<div class="info-title">
-		<table>
-			<tr>
-				<td>| Free Board</td>
-				<td>
-				<a href="<%=cp%>/board/insert.board" class="write-board" style="margin-left: 500px;">글쓰기 |</a>
-				<a href="<%=cp%>/board/list.board" class="write-board" style="margin-left: 0px; font-size: 16px"> 새로고침</a>
-				</td>
-			<tr>
-		</table>
+	<div class="info-title">| Free Board
+				
 	</div>
 	<div
 		style="color: white; margin: 0 auto; text-align: left; font: 15px; width: 960px;">${dataCnt}개(${page}/${totalPage})</div>
@@ -72,7 +74,7 @@
 		<form action="<%=cp%>/board/list.board" method="post"
 			name="boardSearch">
 			<ul class="info-bottom-1"
-				style="magin-top: 10px; color: white; widows: 60%; height: 50px; margin-left: 200px;">
+				style="magin-top: 10px; color: white; widows: 60%; height: 50px; margin-left: 250px;">
 				<li style="float: left;"><select class="serch-option"
 					name="type">
 						<option value="" ${type==""?"selected='selected'":""}>선택</option>
@@ -88,8 +90,12 @@
 
 				<li style="float: left;"><input class="serch-text" type="text"
 					id="keyword" name="keyword" value="${keyword}">
-					<button class="serch-button" onclick="boardSearch()">검색</button></li>
-				<li style="float: left;"></li>
+					<button class="serch-button" onclick="boardSearch()">검색</button>
+					</li>
+				<li style="float: left;">
+				<a href="<%=cp%>/board/insert.board" class="write-board" style="margin-left: 90px;">글쓰기</a> <span>|</span>
+				<a href="<%=cp%>/board/list.board" class="write-board" style="font-size: 16px; margin: 0px;"> 새로고침</a>
+				</li>
 			</ul>
 
 

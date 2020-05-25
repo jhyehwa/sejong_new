@@ -10,18 +10,18 @@
 
 <div class="header-top">
     <div class="header-right">
-        <div class="left">
+        <div class="left" style="width: 150px; text-align: right;">
             <c:if test="${empty sessionScope.loginMem}">
                 <a href="<%=cp%>/memberSj/login.mem">LOGIN</a>
-                    &nbsp;|&nbsp;
+                    <span style="color: white;"> &nbsp;|&nbsp; </span>
                 <a href="<%=cp%>/memberSj/insert.mem">JOIN</a>
             </c:if>
-            <c:if test="${not empty sessionScope.loginMem}">
-                <span style="color:blue;">${sessionScope.loginMem.loginName}</span>님
-                    &nbsp;|&nbsp;
+            <c:if test="${not empty sessionScope.loginMem}">                    
                     <a href="<%=cp%>/memberSj/logout.mem">LOGOUT</a>
-                    &nbsp;|&nbsp;
+                    <span style="color: white;"> &nbsp;|&nbsp; </span>
                     <a href="<%=cp%>/memberSj/update.mem">UPDATE</a>
+                    <br>
+                <span style="color:#FBF5C9;">${sessionScope.loginMem.loginName}님</span>
             </c:if> 
          </div>   
 	   <div class="logo-main">

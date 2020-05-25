@@ -57,7 +57,7 @@ function send() {
 			<li class="input-question-large">내용</li>
 			<li class="input-answer-content"><textarea name="content" cols="80" rows="25" style="resize: none; border-radius: 10px; padding-left: 10px; font-weight: 600; ">${dto.content}</textarea></li>
 		</ul>
-		<div class="info-content-last">
+		<div class="info-content-last" style="padding-top: 15px;">
 			<ul class="info-content-button">
 				<li><button type="button" onclick="send();">${mode=='update' ? '수정' : '등록' }</button></li>
 				<li><button type="reset">다시입력</button></li>
@@ -72,6 +72,7 @@ function send() {
 	</div>
 </form>
 
+
 	<div class="text-sub1">
 			<p class="hold-menu">Menu</p>
 		<ul class="sub-menu">
@@ -81,7 +82,7 @@ function send() {
 		</ul>
 	</div>
 
-	<div class="footer">
+	<div class="footer" style="margin-top:30px;">
    	 	<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 	</div>
 </body>

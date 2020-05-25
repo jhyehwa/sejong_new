@@ -66,7 +66,7 @@ function sendLogin() {
 				<span>|</span> 로그인
 			</h2>
 		</header>
-		<article class="article">
+		<article class="article" style="border: none; margin-bottom:150px;">
 			<form name="memberForm" method="post">
 				<table>
 					<tr class="list-row-2">
