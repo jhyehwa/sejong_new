@@ -11,6 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="<%=cp %>/resource/css/board.css" type="text/css">
+<jsp:include page="/WEB-INF/views/layout/sns.jsp"></jsp:include>
 <title>Insert title here</title>
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <script type="text/javascript">
@@ -60,7 +61,7 @@ function send() {
 			<ul class="info-content-button">
 				<li><button type="button" onclick="send();">${mode=='update' ? '수정' : '등록' }</button></li>
 				<li><button type="reset">다시입력</button></li>
-				<li><button type="button" onclick="javascript:location.href='<%=cp%>/notice/list.do';">취소</button></li>
+				<li><button type="button" onclick="javascript:location.href='<%=cp%>/board/list.board';">취소</button></li>
 			</ul>
 		</div>
 		<c:if test="${mode=='update'}">

@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="/css/board.css" type="text/css">
 <title>Insert title here</title>
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<jsp:include page="/WEB-INF/views/layout/sns.jsp"></jsp:include>
 <link rel="stylesheet" href="<%=cp%>/resource/css/information.css"
 	type="text/css">
 <script type="text/javascript">

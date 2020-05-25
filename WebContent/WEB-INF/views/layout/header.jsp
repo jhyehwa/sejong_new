@@ -21,7 +21,7 @@
                     &nbsp;|&nbsp;
                     <a href="<%=cp%>/memberSj/logout.mem">LOGOUT</a>
                     &nbsp;|&nbsp;
-                    <a href="<%=cp%>/">UPDATE</a>
+                    <a href="<%=cp%>/memberSj/update.mem">UPDATE</a>
             </c:if> 
          </div>   
 	   <div class="logo-main">

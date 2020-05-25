@@ -16,7 +16,7 @@ public class MemberDAO {
 		StringBuilder sb = new StringBuilder();
 		
 		try {
-			sb.append("SELECT m_num, m1.m_id, m_name, m_password, TO_CHAR(m_created, 'YYYY-MM-DD') m_created, m_birth, m_email, m_tel, m_addr1, m_addr2");
+			sb.append("SELECT m_num, m1.m_id, m_name, m_password, TO_CHAR(m_created, 'YYYY-MM-DD') m_created, TO_CHAR(m_birth, 'YYYY-MM-DD') m_birth, m_email, m_tel, m_addr1, m_addr2");
 			sb.append(" FROM member1 m1 JOIN member2 m2 ON m1.m_id = m2.m_id");
 			sb.append(" WHERE m1.m_id = ?");
 			
@@ -59,7 +59,7 @@ public class MemberDAO {
 	}
 	
 	
-	public void insertMember(MemberDTO dto) {
+	public void insertMember(MemberDTO dto){
 		
 		String sql;
 		PreparedStatement pstmt = null;
@@ -77,13 +77,14 @@ public class MemberDAO {
 			pstmt = null;
 			
 			
-			sql = "INSERT INTO member2(m_birth, m_email, m_tel, m_addr1, m_addr2) VALUES(?,?,?,?,?)";
+			sql = "INSERT INTO member2(m_id,m_birth, m_email, m_tel, m_addr1, m_addr2) VALUES(?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, dto.getBirth());
-			pstmt.setString(2, dto.getEmail());
-			pstmt.setString(3, dto.getTel());
-			pstmt.setString(4, dto.getAddr1());
-			pstmt.setString(5, dto.getAddr2());
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getBirth());
+			pstmt.setString(3, dto.getEmail());
+			pstmt.setString(4, dto.getTel());
+			pstmt.setString(5, dto.getAddr1());
+			pstmt.setString(6, dto.getAddr2());
 			
 			pstmt.executeUpdate();
 			
@@ -100,5 +101,71 @@ public class MemberDAO {
 		}
 	}
 	
-//	public void 
+	public void updateMember(MemberDTO dto) {
+		String sql;
+		PreparedStatement pstmt = null;
+		
+		try {
+			sql = "UPDATE member1 SET m_password=?, m_name=? WHERE m_id=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getPassword());
+			pstmt.setString(2, dto.getName());
+			pstmt.setString(3, dto.getId());
+			pstmt.executeUpdate();
+			pstmt.close();
+			pstmt = null;
+			
+			sql = "UPDATE member2 SET m_birth=?, m_email=?, m_tel=?, m_addr1=?, m_addr2=? WHERE m_id=?";
+			pstmt = conn.prepareCall(sql);
+			pstmt.setString(1, dto.getBirth());
+			pstmt.setString(2, dto.getEmail());
+			pstmt.setString(3, dto.getTel());
+			pstmt.setString(4, dto.getAddr1());
+			pstmt.setString(5, dto.getAddr2());
+			pstmt.setString(6, dto.getId());
+			pstmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (Exception e2) {
+				}
+			}
+		}
+	}
+	 
+	public void deleteMember(String id){
+		String sql;
+		PreparedStatement pstmt = null;
+		
+		try {
+			sql = "DELETE FROM member2 WHERE m_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			pstmt.close();
+			pstmt = null;
+			
+			sql = "DELETE FROM member1 WHERE m_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			
+		}  catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (Exception e2) {
+				}
+			}
+		}
+	}
 }

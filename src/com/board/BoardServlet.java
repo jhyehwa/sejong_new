@@ -27,7 +27,7 @@ public class BoardServlet extends MyServlet {
 
 		HttpSession session = req.getSession();
 		LoginSession ls = (LoginSession) session.getAttribute("loginMem");
-
+		
 		if (ls == null) {
 			resp.sendRedirect(cp + "/memberSj/login.mem");
 			return;

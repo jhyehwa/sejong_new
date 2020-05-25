@@ -21,6 +21,7 @@
 <link rel="stylesheet"
 	href="<%=cp%>/resource/jquery/css/smoothness/jquery-ui.min.css"
 	type="text/css">
+<jsp:include page="/WEB-INF/views/layout/sns.jsp"></jsp:include>
 
 <script type="text/javascript" src="<%=cp%>/resource/js/util.js"></script>
 <script type="text/javascript"
@@ -81,7 +82,9 @@ function sendLogin() {
 						<td class="td-right"><input type="password" name="userPwd"
 							class="boxTF" maxlength="10"></td>
 					</tr>
-
+					<tr class="list-row-1">
+						<td class="td-left" colspan="2"><span style="color: red; font-size: 15px;">${msg}</span></td>
+					</tr>
 				</table>
 			</form>
 		</article>
