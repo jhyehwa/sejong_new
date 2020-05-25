@@ -10,8 +10,7 @@ String cp = request.getContextPath();
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="<%=cp%>/resource/css/information.css"
-	type="text/css">
+<link rel="stylesheet" href="<%=cp%>/resource/css/information.css" type="text/css">
 <title>Insert title here</title>
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <script type="text/javascript">

@@ -23,10 +23,13 @@
 	margin: 0 auto;
 	width: 960px;
 	height: 40px;
-	border-bottom: 1px solid white;
+	border-collapse: collapse;
 }
 
-.qua-sub{
+.qna-sub {
+	border-bottom: 1px solid white;
+	height:40px;
+	
 }
 
 .qna-num{
@@ -39,6 +42,9 @@
 	color: white;
 	width: 300px;
 	padding-left: 10px;
+}
+.qna-title a {
+	color: white;
 }
 
 .qna-writer{
@@ -69,13 +75,33 @@
 	margin-top: 15px;
 	color: white;
 	margin: 0 auto;
-	text-align: left;
+	text-align: center;
 	font-size: 25px;
 	font-weight: bold;
 	width: 960px;
 	margin-bottom: 15px;
 }
 
+.qna-last button {
+	width: 60px;
+	height: 30px;
+}
+
+.qna-last select {
+	width: 60px;
+	height: 30px;
+}
+
+.qna-last input{
+	width: 180px;
+	height: 30px;
+}
+
+
 .qna-last a{
 	color: white;
+}
+
+.qna-last a:hover{
+	text-decoration: none;
 }

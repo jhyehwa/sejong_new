@@ -29,7 +29,18 @@ function searchList() {
 </div>
 
 <div class="info-title">| Notice/Event</div>
+
 	<div class="info">
+		<div class="info-select">
+			<form name="searchForm" action="<%=cp %>/notice/list.do"  method="post">
+			<select name="condition" class="serch-option" onchange="searchList();">
+				<option value="">선&nbsp;&nbsp;택</option>
+				<option value="notice" ${condition == "notice" ? "selected='selected'" : " "}>공지사항</option>					
+				<option value="created" ${condition == "created" ? "selected='selected'" : " "}>진행중인 이벤트</option>
+				<option value="closed" ${condition == "closed" ? "selected='selected'" : " "}>종료된 이벤트</option>
+			</select>
+			</form>
+		</div>
 		<ul class="info-sub">
 			<li class="num">Num</li>
 			<li class="title">Title</li>
@@ -66,15 +77,6 @@ function searchList() {
  	    <jsp:include page="/WEB-INF/views/layout/sns.jsp"></jsp:include>		
 		
 		<ul class="info-bottom">
-			<li>
-			<form name="searchForm" action="<%=cp %>/notice/list.do"  method="post">
-			<select name="condition" class="serch-option" onchange="searchList();">
-				<option value="">선&nbsp;&nbsp;택</option>
-				<option value="notice" ${condition == "notice" ? "selected='selected'" : " "}>공지사항</option>					
-				<option value="created" ${condition == "created" ? "selected='selected'" : " "}>진행중인 이벤트</option>
-				<option value="closed" ${condition == "closed" ? "selected='selected'" : " "}>종료된 이벤트</option>
-			</select>
-			</form>
 			<c:if test="${sessionScope.loginMem.loginId == 'admin'}">
 			<li><a href="<%=cp%>/notice/created.do" class="write-board1">글쓰기</a></li>
 			</c:if>
@@ -85,7 +87,7 @@ function searchList() {
 			<p class="hold-menu">Menu</p>
 		<ul class="sub-menu">
 			<li><a href="<%=cp %>/notice/list.do"><span style="color: #B2FA5C;">Notice/Event</span></a></li>
-			<li><a href="information_noticeboard.html">QnA</a></li>
+			<li><a href="<%=cp %>/qna/list.do">QnA</a></li>
 			<li><a href="<%=cp%>/board/list.board">FreeBoard</a></li>
 			<li><a href="information_directions.html">Directions</a></li>
 		</ul>

@@ -60,7 +60,11 @@ nav {
 .info {
 	margin: 0 auto;
 	width: 960px;
-	height: 550px;
+	min-height: 550px;
+}
+
+.info-select {
+	text-align: right;
 }
 
 .info-title {
@@ -263,15 +267,16 @@ nav {
 }
 
 .info-bottom {
-	margin-top: 10px;
 	color: white;
 	width: 50%;
 	height: 40px;
-	margin-left: 200px;
+	text-align: center;
+	margin: 0 auto;
 }
 
 .info-bottom li {
-	float: left;
+	text-align: center;
+	margin-top: 10px;
 }
 
 .info-bottom form{
@@ -279,11 +284,15 @@ nav {
 }
 
 .write-board1 {
-	margin-left: 60px;
 	color: white;
 	font-weight: bold;
 	font-size: 20px;
 }
+
+.info-bottom a:hover{
+	text-decoration: none;
+}
+
 
 .info-content-last {
 	margin-top: 20px;
@@ -311,9 +320,13 @@ nav {
 	width: 60px;
 }
 
+.sub-menu a:hover{
+	text-decoration: none;
+}
+
 .serch-option {
 	height: 30px;
-	margin-right: 10px
+	margin: 0 auto;
 }
 
 .serch-text {
@@ -458,25 +471,29 @@ nav {
 }
 
 .board-content-last {
-	margin-top: 10px;
 	color: white;
 	width: 100%;
 	height: 40px;
 	clear: both;
 	text-align: center;
+	padding-bottom: 20px;
 }
 .board-content-last button {
-	margin-left: 15px;
-	margin-right: 15px;
+	margin-left: 5px;
+	margin-right: 5px;
 	height: 30px;
 	width: 60px;
 }
 
 .board-content-last a {
-	margin-left: 15px;
-	margin-right: 15px;
+	margin-left: 5px;
+	margin-right: 5px;
 	font-size: 25px;
 	color: white;
+}
+
+.board-content-last a:hover{
+	text-decoration: none;
 }
 
 .noticebutton_pre a{
@@ -516,6 +533,17 @@ nav {
 	margin-left: 280px;
 	height: 40px;
 	line-height: 35px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.reply{
+	text-align: right;
+	margin-right: 20px;
+}
+
+.reply a{
+	color: white;
 	font-size: 20px;
 	font-weight: bold;
 }
