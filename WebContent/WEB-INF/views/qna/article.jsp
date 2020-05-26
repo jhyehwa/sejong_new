@@ -27,7 +27,7 @@ function deleteNotice(num) {
 	<div class="header">
 		<jsp:include page="/WEB-INF/views/layout/header.jsp"></jsp:include>
 	</div>
-	<div class="info-title">| Notice/Event</div>
+	<div class="info-title">| QnA</div>
 	<div class="info">
 		<ul class="board">
 			<li class="board-qeustion">작성자</li>

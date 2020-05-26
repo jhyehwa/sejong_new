@@ -82,7 +82,7 @@ public class QnADAO {
 		String sql;
 		
 		try {
-			sql="UPDATE board SET q_orderNo=q_orderNo+1 WHERE q_groupNum = ? AND q_orderNo > ?";
+			sql="UPDATE qna SET q_orderNo = q_orderNo+1 WHERE q_groupNum = ? AND q_orderNo > ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, groupNum);
