@@ -315,8 +315,7 @@ td{
 	<div class="footer" style="margin-top : 20px;">
 		<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 	</div>
-
-<script src="http://dmaps.daum.ndt/map_js_init/postcode.v2.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
     function daumPostcode() {
         new daum.Postcode({
@@ -347,7 +346,7 @@ td{
                         extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
                     }
                     // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
-                    fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
+                    fullAddr += (extraAddrc !== '' ? ' ('+ extraAddr +')' : '');
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
