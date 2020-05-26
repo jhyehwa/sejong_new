@@ -72,7 +72,7 @@ function sendLogin() {
 					<tr class="list-row-2">
 						<td class="td-left">아&nbsp;이&nbsp;디</td>
 						<td class="td-right"><input type="text" name="userId"
-							id="userId" maxlength="10" class="boxTF"> <span
+							id="userId" maxlength="10" class="boxTF" style="font-size: 15px;"> <span
 							id="userIdState" style='display: none;'></span></td>
 						<td rowspan="2"><button type="button" class="td-btn" onclick="sendLogin();">LOGIN</button></td>
 					</tr>
@@ -80,7 +80,7 @@ function sendLogin() {
 					<tr class="list-row-1">
 						<td class="td-left">비밀번호</td>
 						<td class="td-right"><input type="password" name="userPwd"
-							class="boxTF" maxlength="10"></td>
+							class="boxTF" maxlength="10" style="font-size: 15px;"></td>
 					</tr>
 					<tr class="list-row-1">
 						<td class="td-left" colspan="2"><span style="color: red; font-size: 15px;">${msg}</span></td>

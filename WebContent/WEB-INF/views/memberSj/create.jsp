@@ -172,15 +172,13 @@ function deleteInfo() {
 }
 
 </script>
+
 <style type="text/css">
 td{
-	padding-bottom: 20px;
-}
-
-.boxTF{
-	
+	padding-bottom: 15px;
 }
 </style>
+
 </head>
 <body>
 	<div class="header">
@@ -193,48 +191,48 @@ td{
 		<table style="border-top : 1px solid white; margin: 30px auto; width: 810px; padding-top:40px;">
 			<tr>
 				<td width="100" valign="top"
-					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">아이디</td>
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold; font-size: 18px;">아이디</td>
 				<td width="250" valign="top"
 					style="text-align: left; padding-top: 5px;"><input
-					type="text" name="memberId" id="memberId" value="${dto.id}"> <span style="color: white; font-weight: bold;">&nbsp;&nbsp;아이디는
+					type="text" name="memberId" id="memberId" value="${dto.id}" style="height: 25px;"> <span style="color: white; font-weight: bold;">&nbsp;&nbsp;아이디는
 						5~10자 이내이며, 첫 글자는 영문자로 시작해야 합니다.</span></td>
 			</tr>
 			<tr>
 				<td width="100" valign="top"
-					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">패스워드</td>
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold; font-size: 18px;">패스워드</td>
 				<td width="250" valign="top"
 					style="text-align: left; padding-top: 5px;"><input
-					type="password" name="memberPassword" id="memberPassword" value="${dto.password}">
+					type="password" name="memberPassword" id="memberPassword" value="${dto.password}" style="height: 25px;">
 					<span style="color: white; font-weight: bold;">&nbsp;&nbsp;5~10이내, 하나이상의 숫자 or 특수문자가 포함되어야 합니다.</span></td>
 			</tr>
 			<tr>
 				<td width="100" valign="top"
-					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">패스워드 확인</td>
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold; font-size: 18px;">패스워드 확인</td>
 				<td width="100" valign="top"
 					style="text-align: left; padding-top: 5px;"><input
 					type="password" name="memberPasswordCh" id="memberPasswordCh"
-					value="${ dto.password}"> 	<span style="color: white; font-weight: bold;">&nbsp;&nbsp;패스워드를 한번 더 입력해주세요.</span></td>
+					value="${ dto.password}" style="height: 25px;"> 	<span style="color: white; font-weight: bold;">&nbsp;&nbsp;패스워드를 한번 더 입력해주세요.</span></td>
 			</tr>
 			<tr>
 				<td width="100" valign="top"
-					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">이름</td>
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold; font-size: 18px;">이름</td>
 				<td width="100" valign="top"
 					style="text-align: left; padding-top: 5px;"><input
-					type="text" name="memberName" id="memberName" value="${dto.name}"> 	<span style="color: white; font-weight: bold;">&nbsp;&nbsp;예)
-						정우진</span></td>
+					type="text" name="memberName" id="memberName" value="${dto.name}" style="height: 25px;"> 	<span style="color: white; font-weight: bold;">&nbsp;&nbsp;예)
+						노현호</span></td>
 			</tr>
 			<tr>
 				<td width="100" valign="top"
-					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">생년월일</td>
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold; font-size: 18px;">생년월일</td>
 				<td style="text-align: left;"><input type="text" name="memberBirth" id="memberBirth"
-					value="${dto.birth}"> 	<span style="color: white; font-weight: bold;">&nbsp;&nbsp;생년월일은 2000-01-01 형식으로 입력하세요.</span></td>
+					value="${dto.birth}" style="height: 25px;"> 	<span style="color: white; font-weight: bold;">&nbsp;&nbsp;생년월일은 2000-01-01 형식으로 입력하세요.</span></td>
 			</tr>
 			<tr>
 				<td width="100" valign="top"
-					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">이메일</td>
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold; font-size: 18px;">이메일</td>
 				<td width="100" valign="top"
 					style="text-align: left; padding-top: 5px;">
-					<select onchange="chooseEmail();"name="selectEmail">
+					<select onchange="chooseEmail();"name="selectEmail" style="width: 100px; height: 25px;">
 						<option value="">선택</option>
 						<option value="naver.com" ${email2 == "naver.com" ? "selected='selected='":""}>네이버</option>
 						<option value="gmail.com" ${email2 == "gmail.com" ? "selected='selected='":""}>구글</option>
@@ -242,16 +240,16 @@ td{
 						<option value="hanmail.com" ${email2 == "hanmail.com" ? "selected='selected='":""}>한메일</option>
 						<option value="direct">직접입력</option>
 				</select> <input type="text" name="email1" value="${ema1}" size="13" maxlength="30"
-					class="boxTF"> <span style="color: white;font-weight: bold;">@</span> <input type="text" name="email2" value="${ema2}"
+					class="boxTF" style="margin-left: 10px;"> <span style="color: white;font-weight: bold;">@</span> <input type="text" name="email2" value="${ema2}"
 					size="13" maxlength="30" class="boxTF" readonly="readonly">
 				</td>
 			</tr>
 			<tr>
 				<td width="100" valign="top"
-					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">전화번호</td>
+					style="text-align: center; padding-top: 5px; color: white; font-weight: bold; font-size: 18px;">전화번호</td>
 				<td width="100" valign="top"
 					style="text-align: left; padding-top: 5px;">
-					<select name="tel1">
+					<select name="tel1" style="width: 100px; height: 25px;">
 						<option value="">선택</option>
 						<option value="010"${tel1 == "010" ? "selected='selected='":""}>010</option>
 						<option value="011" ${tel1 == "011" ? "selected='selected='":""}>011</option>
@@ -260,20 +258,20 @@ td{
 						<option value="018" ${tel1 == "018" ? "selected='selected='":""}>018</option>
 						<option value="019" ${tel1 == "019" ? "selected='selected='":""}>019</option>
 				</select><span style="color: white;font-weight: bold;">&nbsp;-&nbsp;</span><input type="text" name="tel2" value="${tel2}" class="boxTF"
-					maxlength="4"> <span style="color: white;font-weight: bold;">&nbsp;-&nbsp;</span> <input type="text" name="tel3" value="${tel3}"
-					class="boxTF" maxlength="4"></td>
+					maxlength="4" style="width: 105px;"> <span style="color: white;font-weight: bold;">&nbsp;-&nbsp;</span> <input type="text" name="tel3" value="${tel3}"
+					class="boxTF" maxlength="4" style="width: 105px;"></td>
 			</tr>
 
 			<tr>
 				<td width="100" valign="top"
 					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;">
 					<label
-					style="font-weight: 900;">우편번호</label></td>
+					style="font-weight: 900; font-size: 18px;">우편번호</label></td>
 				<td style="padding: 0 0 15px 0px; text-align: left;">
 					<p style="margin-top: 1px; margin-bottom: 5px;">
 						<input type="text" name="zip" id="zip" value="${dto.addr1}" class="boxTF"
-							readonly="readonly">
-						<button type="button" class="btn" onclick="daumPostcode();">우편번호</button>
+							readonly="readonly" style="height: 25px;">
+						<button type="button" class="btn" onclick="daumPostcode();" style="height: 35px;">우편번호</button>
 					</p>
 				</td>
 			</tr>
@@ -281,31 +279,31 @@ td{
 			<tr>
 				<td width="100" valign="top"
 					style="text-align: center; padding-top: 5px; color: white; font-weight: bold;"><label
-					style="font-weight: 900;">주소</label></td>
+					style="font-weight: 900; font-size: 18px;">주소</label></td>
 				<td style="padding: 0 0 15px 0px;">
 					<p style="margin-top: 1px; margin-bottom: 5px;">
 						<input type="text" name="addr1" id="addr1" value="${dto.addr1}" maxlength="50"
 							class="boxTF" style="width: 95%;" placeholder="기본 주소"
-							readonly="readonly">
+							readonly="readonly"style="height: 25px;">
 					</p>
 					<p style="margin-bottom: 5px;">
 						<input type="text" name="addr2" id="addr2" value="${dto.addr2}" maxlength="50"
-							class="boxTF" style="width: 95%;" placeholder="나머지 주소">
+							class="boxTF" style="width: 95%;" placeholder="나머지 주소"style="height: 25px;">
 					</p>
 				</td>
 			</tr>
 		</table>
 		
-		<table style="margin: 30px auto;">
+		<table style="margin: auto;">
 			<tr>
 				<td style="text-align: center;">
-					<button type="button" name="sendInfo" onclick="checkInfo();" style=" padding:6px; height:45px; border-radius: 5px; border: none; 
+					<button type="button" name="sendInfo" onclick="checkInfo();" style="width: 100px; height:35px; border-radius: 5px; border: none; 
 					">${mode == "update" ? "수정하기":"가입하기"}</button>&nbsp;&nbsp;&nbsp;&nbsp;
-					<button type="reset" style=" padding:6px; height:45px;border-radius: 5px; border: none;">다시입력</button>&nbsp;&nbsp;&nbsp;&nbsp;
-					<button type="button" onclick="javascript:location.href='<%=cp%>/';"  style=" padding:6px; height:45px;border-radius: 5px; border: none;"
+					<button type="reset" style=" padding:6px; height:35px;border-radius: 5px; border: none; width: 100px;">다시입력</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" onclick="javascript:location.href='<%=cp%>/';"  style="width: 100px; padding:6px; height:35px;border-radius: 5px; border: none;"
 					>뒤로가기</button>
 					<c:if test="${mode=='update'}">
-					<button type="button" onclick="deleteInfo();" style=" margin-left:20px;  padding:6px; height:45px;border-radius: 5px; border: none;">
+					<button type="button" onclick="deleteInfo();" style="width: 100px; margin-left:15px;  padding:6px; height:35px;border-radius: 5px; border: none;">
 					탈퇴하기
 					</button>
 					</c:if>
@@ -314,11 +312,11 @@ td{
 		</table>
 	</form>
 </div>
-	<div class="footer">
+	<div class="footer" style="margin-top : 20px;">
 		<jsp:include page="/WEB-INF/views/layout/footer.jsp"></jsp:include>
 	</div>
 
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="http://dmaps.daum.ndt/map_js_init/postcode.v2.js"></script>
 <script>
     function daumPostcode() {
         new daum.Postcode({
