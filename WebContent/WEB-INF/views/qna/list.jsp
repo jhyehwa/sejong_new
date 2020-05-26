@@ -86,7 +86,7 @@ function searchList() {
 			<li><a href="<%=cp %>/notice/list.do">Notice/Event</a></li>
 			<li><a href="<%=cp %>/qna/list.do"><span style="color: #B2FA5C;">QnA</span></a></li>
 			<li><a href="<%=cp%>/board/list.board">FreeBoard</a></li>
-			<li><a href="information_directions.html">Directions</a></li>
+			<li><a href="<%=cp%>/direction/direction.do">Directions</a></li>
 		</ul>
 	</div>
 

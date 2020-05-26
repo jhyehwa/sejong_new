@@ -60,7 +60,7 @@
                 <li><a href="<%=cp %>/notice/list.do">Notice/Event</a></li>
                 <li><a href="<%=cp %>/qna/list.do">QnA</a></li>
                 <li><a href="<%=cp %>/board/list.board">FreeBoard</a></li>
-                <li><a href="<%=cp %>/map/showmap.do">Directions</a></li>      
+                <li><a href="<%=cp%>/direction/direction.do">Directions</a></li>      
             </ul>
         </li>   
 

@@ -63,9 +63,9 @@ function deleteNotice(num) {
 			<ul class="sub-menu">
 				<li><a href="<%=cp%>/notice/list.do"><span
 						style="color: #B2FA5C;">Notice/Event</span></a></li>
-				<li><a href="information_noticeboard.html">QnA</a></li>
+				<li><a href="<%=cp %>/qna/list.do">QnA</a></li>
 				<li><a href="<%=cp%>/board/list.board">FreeBoard</a></li>
-				<li><a href="information_directions.html">Directions</a></li>
+				<li><a href="<%=cp%>/direction/direction.do">Directions</a></li>
 			</ul>
 		</div>
 	</div>

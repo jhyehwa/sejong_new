@@ -348,6 +348,10 @@ nav {
 	font-size: 20px;
 }
 
+.address_main{
+	margin: 0 auto;
+	text-align: center;
+}
 
 .address {
 	/* padding-top: 20px; */

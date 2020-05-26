@@ -110,7 +110,7 @@
 			<li><a href="<%=cp%>/qna/list.do">QNA</a></li>
 			<li><a href="<%=cp%>/board/list.board"><span
 					style="color: #B2FA5C;">FreeBoard</span></a></li>
-			<li><a href="information_directions.html">Directions</a></li>
+			<li><a href="<%=cp%>/direction/direction.do">Directions</a></li>
 		</ul>
 	</div>
 

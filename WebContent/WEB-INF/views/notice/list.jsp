@@ -34,7 +34,7 @@ function searchList() {
 		<div class="info-select">
 			<form name="searchForm" action="<%=cp %>/notice/list.do"  method="post">
 			<select name="condition" class="serch-option" onchange="searchList();">
-				<option value="">선&nbsp;&nbsp;택</option>
+				<option value="">전체보기</option>
 				<option value="notice" ${condition == "notice" ? "selected='selected'" : " "}>공지사항</option>					
 				<option value="created" ${condition == "created" ? "selected='selected'" : " "}>진행중인 이벤트</option>
 				<option value="closed" ${condition == "closed" ? "selected='selected'" : " "}>종료된 이벤트</option>
@@ -89,7 +89,7 @@ function searchList() {
 			<li><a href="<%=cp %>/notice/list.do"><span style="color: #B2FA5C;">Notice/Event</span></a></li>
 			<li><a href="<%=cp %>/qna/list.do">QnA</a></li>
 			<li><a href="<%=cp%>/board/list.board">FreeBoard</a></li>
-			<li><a href="information_directions.html">Directions</a></li>
+			<li><a href="<%=cp%>/direction/direction.do">Directions</a></li>
 		</ul>
 	</div>
 	
