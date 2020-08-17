@@ -3,13 +3,13 @@
 <br/>
 
 ## 데모<br/>
-![image](https://user-images.githubusercontent.com/62512658/90391518-3c6bcc00-e0c8-11ea-9215-87c4841886ab.png){: width="100" height="100"}<br/>
-![image](https://user-images.githubusercontent.com/62512658/90391592-5d342180-e0c8-11ea-832d-3e54a433725c.png){: width="100" height="100"}<br/>
-![image](https://user-images.githubusercontent.com/62512658/90391680-7e950d80-e0c8-11ea-8d7d-fdb131eaf7b2.png){: width="100" height="100"}<br/>
+![image](https://user-images.githubusercontent.com/62512658/90391518-3c6bcc00-e0c8-11ea-9215-87c4841886ab.png "width: 100px; height: 100px")<br/>
+![image](https://user-images.githubusercontent.com/62512658/90391592-5d342180-e0c8-11ea-832d-3e54a433725c.png "width: 100px; height: 100px")<br/>
+![image](https://user-images.githubusercontent.com/62512658/90391680-7e950d80-e0c8-11ea-8d7d-fdb131eaf7b2.png "width: 100px; height: 100px")<br/>
 
 ## 참고 사이트
 [OUTBACK](https://www.outback.co.kr/)<br/>
-[VIPS](https://www.ivips.co.kr:7002/main.asp)
+[VIPS](https://www.ivips.co.kr:7002/main.asp)<br/>
 
 ## 목차
 1. 주요기능
@@ -24,6 +24,7 @@
 - 공지/이벤트
 - 자유게시판
 - QnA
+<br/>
 
 ## 특징
 - Enterprise 환경에서의 자바 기반 웹 프로그래밍 개발 기술 습득
