@@ -3,7 +3,7 @@
 <br/>
 
 ## 데모<br/>
-![image](https://user-images.githubusercontent.com/62512658/90391518-3c6bcc00-e0c8-11ea-9215-87c4841886ab.png =100x)<br/>
+![image](https://user-images.githubusercontent.com/62512658/90391518-3c6bcc00-e0c8-11ea-9215-87c4841886ab.png = 100x)<br/>
 ![image](https://user-images.githubusercontent.com/62512658/90391592-5d342180-e0c8-11ea-832d-3e54a433725c.png {width=100px height=100px})<br/>
 ![image](https://user-images.githubusercontent.com/62512658/90391680-7e950d80-e0c8-11ea-8d7d-fdb131eaf7b2.png {width=100px height=100px})<br/>
 
