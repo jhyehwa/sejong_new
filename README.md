@@ -6,17 +6,20 @@
 ![90391518-3c6bcc00-e0c8-11ea-9215-87c4841886ab](https://user-images.githubusercontent.com/62512658/90392891-b43af600-e0ca-11ea-92b6-9f3754dd1a58.png)<br/>
 
     -   브랜드 스토리/메뉴/예약/게시판
+<br/>
 
 ### [예약화면]
 ![90391592-5d342180-e0c8-11ea-832d-3e54a433725c](https://user-images.githubusercontent.com/62512658/90392895-b56c2300-e0ca-11ea-853d-66aa7a048281.png)<br/>
 
     -   예약을 할 수 있게 날짜와 시간, 인원 그리고 예약자 정보를 입력후 예약 가능
     -   예약 후 예약 수정 가능
+<br/>
 
 ### [자유게시판]
 ![90391680-7e950d80-e0c8-11ea-8d7d-fdb131eaf7b2](https://user-images.githubusercontent.com/62512658/90392897-b604b980-e0ca-11ea-8c43-43a22b615a9d.png)<br/>
 
     -   회원들이 자유롭게 게시글을 등록할 수 있음
+<br/>
 
 ## 참고 사이트
 [OUTBACK](https://www.outback.co.kr/)<br/>
